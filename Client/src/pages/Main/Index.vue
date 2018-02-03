@@ -84,8 +84,13 @@
 </template>
 
 <script>
+// import DefaultLayout from '@/layouts/Default'
 export default {
   name: 'Main',
+  components: {
+    // DefaultLayout
+    // This is causing an ambiguous root error when rendering.
+  },
   data () {
     return {
       msg: 'Welcome to Vue.js 2.0'
