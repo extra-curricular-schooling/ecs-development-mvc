@@ -1,8 +1,6 @@
 <template>
-  <div id='RegAppToPortalRequest'>
-    <button v-on:click='submit'>
-      Hit me!
-    </button>
+  <div>
+
   </div>
 </template>
 
@@ -19,14 +17,16 @@ export default {
   created () {},
   methods: {
     submit: (form) => {
+      // This is not a correct path... Please fix when available.
       axios.post('/registration-response', {
-        // hello world
+        // Data posted will go in here.
       })
-        // Not sure on the naming for this path...
         .then(response => {
+          // Collecting the response, do something here.
           console.log(response)
         })
         .catch(function (error) {
+          // Catch and resolve any errors here.
           console.log(error)
         })
     }

@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Reg from '@/components/RegistrationAppToPortal'
+import Main from '@/pages/main/index.vue'
+import Registration from '@/pages/registration/index.vue'
+import Home from '@/pages/home/index.vue'
+import Account from '@/pages/account/index.vue'
+import Sweepstakes from '@/pages/sweepstakes/index.vue'
 
 Vue.use(Router)
 
@@ -9,13 +12,28 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Main',
+      component: Main
     },
     {
-      path: '/reg',
+      path: '/registration',
       name: 'Registration',
-      component: Reg
+      component: Registration
+    },
+    {
+      path: '/home',
+      name: 'Home',
+      component: Home
+    },
+    {
+      path: '/account',
+      name: 'Account',
+      component: Account
+    },
+    {
+      path: '/sweepstakes',
+      name: 'Sweepstakes',
+      component: Sweepstakes
     }
   ]
 })
