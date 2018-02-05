@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Client",
+    "\\Server",
+    "\\Server\\ecs-dev-server"
+  ],
+  "SelectedNode": "\\Server\\ecs-dev-server\\Global.asax",
+  "PreviewInSolutionExplorer": false
+}
