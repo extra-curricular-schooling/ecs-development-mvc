@@ -3,8 +3,9 @@
     "",
     "\\Client",
     "\\Server",
-    "\\Server\\ecs-dev-server"
+    "\\Server\\ecs-dev-server",
+    "\\Server\\ecs-dev-server\\Models"
   ],
-  "SelectedNode": "\\Server\\ecs-dev-server\\Global.asax",
+  "SelectedNode": "\\Server",
   "PreviewInSolutionExplorer": false
 }
