@@ -4,17 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-
-// This is a garbage Controller. Throw away after uploading to GitHub
-
 namespace ecs_dev_server.Controllers
 {
-    public class TestController : Controller
+    public class LoginController : Controller
     {
-        // GET: Test
+        // GET: Login
         public ActionResult Index()
         {
-            
             return View();
         }
     }

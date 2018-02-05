@@ -155,7 +155,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\AccountAdminController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LogoutController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Controllers\SweepstakeAdminController.cs" />
+    <Compile Include="Controllers\SweepstakeController.cs" />
     <Compile Include="ECSContext.cs" />
     <Compile Include="DotNetOpenAuth.LinkedInOAuth2\LinkedInOAuth2Client.cs" />
     <Compile Include="Global.asax.cs">
@@ -188,6 +195,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\AccountAdmin\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Login\" />
+    <Folder Include="Views\Logout\" />
+    <Folder Include="Views\Registration\" />
+    <Folder Include="Views\SweepstakeAdmin\" />
+    <Folder Include="Views\Sweepstake\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
