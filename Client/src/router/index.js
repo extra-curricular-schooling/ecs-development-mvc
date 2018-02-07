@@ -6,6 +6,7 @@ import Registration from '@/pages/Registration'
 import Home from '@/pages/Home'
 import Account from '@/pages/Account'
 import Sweepstake from '@/pages/Sweepstake'
+import MissingPage from '@/pages/MissingPage'
 
 Vue.use(Router)
 
@@ -40,6 +41,12 @@ export default new Router({
       path: '/sweepstake',
       name: 'Sweepstake',
       component: Sweepstake
+    },
+    // Does not know how to handle 404 errors. Might want to build in a catch all page right here.
+    {
+      path: '/404',
+      name: 'MissingPage',
+      component: MissingPage
     }
   ]
 })

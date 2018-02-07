@@ -95,6 +95,10 @@ export default {
     return {
       msg: 'Welcome to Vue.js 2.0'
     }
+  },
+  methods: {
+    // this.$router will talk to the vue-router (which is linked to the vue instance) to navigate to different pages.
+    // this.$store will talk to the vuex store (which is linked to the vue instance) to get global data
   }
 }
 </script>
