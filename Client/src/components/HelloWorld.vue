@@ -84,21 +84,12 @@
 </template>
 
 <script>
-// import DefaultLayout from '@/layouts/Default'
 export default {
-  name: 'Main',
-  components: {
-    // DefaultLayout
-    // This is causing an ambiguous root error when rendering.
-  },
+  name: 'HelloWorld',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
-  },
-  methods: {
-    // this.$router will talk to the vue-router (which is linked to the vue instance) to navigate to different pages.
-    // this.$store will talk to the vuex store (which is linked to the vue instance) to get global data
   }
 }
 </script>

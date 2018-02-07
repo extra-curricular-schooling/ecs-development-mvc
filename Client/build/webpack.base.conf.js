@@ -46,6 +46,17 @@ module.exports = {
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
+      /*
+      * Add in the Typescript support here!!!!
+      */
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/]
+        }
+      },
       {
         test: /\.js$/,
         loader: 'babel-loader',

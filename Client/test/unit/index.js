@@ -1,5 +1,9 @@
 import Vue from 'vue'
 
+// The es6-promise/auto package is included for nightwatch
+// Error: [vuex] vuex requires a Promise polyfill in this browser.
+import 'es6-promise/auto'
+
 Vue.config.productionTip = false
 
 // require all test files (files that ends with .spec.js)

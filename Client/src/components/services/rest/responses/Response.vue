@@ -10,4 +10,3 @@ export default {
   // Does the client need to respond to any requests?
 }
 </script>
-
