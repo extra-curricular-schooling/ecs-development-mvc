@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Main from '../pages/main/Index'
-import About from '../pages/about/Index'
-import Registration from '../pages/registration/Index'
-import Home from '../pages/home/Index'
-import Account from '../pages/account/Index'
-import Sweepstakes from '../pages/sweepstakes/Index'
+import Main from '@/pages/Main'
+import About from '@/pages/About'
+import Registration from '@/pages/Registration'
+import Home from '@/pages/Home'
+import Account from '@/pages/Account'
+import Sweepstake from '@/pages/Sweepstake'
 
 Vue.use(Router)
 
@@ -18,7 +18,7 @@ export default new Router({
     },
     {
       path: '/about',
-      name: 'about',
+      name: 'About',
       component: About
     },
     {
@@ -37,9 +37,9 @@ export default new Router({
       component: Account
     },
     {
-      path: '/sweepstakes',
-      name: 'Sweepstakes',
-      component: Sweepstakes
+      path: '/sweepstake',
+      name: 'Sweepstake',
+      component: Sweepstake
     }
   ]
 })
