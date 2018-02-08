@@ -13,6 +13,7 @@ namespace ecs_dev_server
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            AuthConfig.RegisterAuth();
         }
     }
 }

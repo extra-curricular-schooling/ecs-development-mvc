@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace ecs_dev_server.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         // GET: Home
