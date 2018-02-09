@@ -1,24 +1,19 @@
 <template>
-  <div>
-    {{msg}}
-  </div>
+  <form>
+    First name: <input><br>
+    Last name: <input><br>
+    <button v-on:click='submit'>Push me</button>
+  </form>
 </template>
 
 <script>
 import axios from 'axios'
 
 export default {
-  name: 'RegAppToPortalRequest',
-  data () {
-    return {
-      msg: 'This is a request'
-    }
-  },
-  created () {},
   methods: {
-    submit: (form) => {
+    submit: () => {
       // This is not a correct path... Please fix when available.
-      axios.post('/registration-response', {
+      axios.get('https://localhost:44313/registration/sayHello', {
         // Data posted will go in here.
       })
         .then(response => {

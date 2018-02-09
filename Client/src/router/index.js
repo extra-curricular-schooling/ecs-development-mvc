@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Main from '@/pages/Main'
-import About from '@/pages/About'
-import Registration from '@/pages/Registration'
-import Home from '@/pages/Home'
-import Account from '@/pages/Account'
-import Sweepstake from '@/pages/Sweepstake'
-import MissingPage from '@/pages/MissingPage'
+import Main from '@/components/pages/Main'
+import About from '@/components/pages/About'
+import Registration from '@/components/pages/Registration'
+import Home from '@/components/pages/Home'
+import Account from '@/components/pages/Account'
+import Sweepstake from '@/components/pages/Sweepstake'
+import MissingPage from '@/components/pages/MissingPage'
 
 Vue.use(Router)
 
