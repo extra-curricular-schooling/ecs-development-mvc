@@ -1,9 +1,5 @@
 <template>
-  <form>
-    First name: <input><br>
-    Last name: <input><br>
-    <button v-on:click='submit'>Push me</button>
-  </form>
+  <button v-on:click.prevent='submit'>Push me</button>
 </template>
 
 <script>
@@ -15,13 +11,13 @@ export default {
       // This is not a correct path... Please fix when available.
       axios({
         method: 'GET',
-        url: 'https://localhost',
+        url: 'https://localhost/registration/SayHello',
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Credentials': true
         }
       })
-        .then(response => console.log(response))
+        .then(response => console.log('It worked!'))
         .catch(response => console.log(response))
     }
   }
