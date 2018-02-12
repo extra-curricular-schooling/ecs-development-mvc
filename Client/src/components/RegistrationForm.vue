@@ -13,17 +13,16 @@ export default {
   methods: {
     submit: () => {
       // This is not a correct path... Please fix when available.
-      axios.get('https://localhost:44313/registration/sayHello', {
-        // Data posted will go in here.
+      axios({
+        method: 'GET',
+        url: 'https://localhost',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true
+        }
       })
-        .then(response => {
-          // Collecting the response, do something here.
-          console.log(response)
-        })
-        .catch(function (error) {
-          // Catch and resolve any errors here.
-          console.log(error)
-        })
+        .then(response => console.log(response))
+        .catch(response => console.log(response))
     }
   }
 }

@@ -10,13 +10,9 @@ namespace ecs_dev_server.CORS
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            // You can add multiple domains to the domains list if you want to accept communications.
-            var domains = new List<string> { "http://localhost:8080/" };
-  
-            if (domains.Contains(filterContext.RequestContext.HttpContext.Request.UrlReferrer.Host))
-            {
-                filterContext.RequestContext.HttpContext.Response.AddHeader("Access-Control-Allow-Origin", "*");
-            }
+            filterContext.RequestContext.HttpContext.Response.AddHeader("Access-Control-Allow-Origin", "http://localhost:8080");
+            filterContext.RequestContext.HttpContext.Response.AddHeader("Access-Control-Allow-Headers", "*");
+            filterContext.RequestContext.HttpContext.Response.AddHeader("Access-Control-Allow-Credentials", "true");
 
             base.OnActionExecuting(filterContext);
         }
