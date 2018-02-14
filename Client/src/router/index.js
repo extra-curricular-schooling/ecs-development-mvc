@@ -1,12 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Main from '@/components/pages/Main'
-import About from '@/components/pages/About'
-import Registration from '@/components/pages/Registration'
-import Home from '@/components/pages/Home'
-import Account from '@/components/pages/Account'
-import Sweepstake from '@/components/pages/Sweepstake'
-import MissingPage from '@/components/pages/MissingPage'
 
 Vue.use(Router)
 
@@ -15,38 +8,38 @@ export default new Router({
     {
       path: '/',
       name: 'Main',
-      component: Main
+      component: () => import('@/components/pages/Main')
     },
     {
       path: '/about',
       name: 'About',
-      component: About
+      component: () => import('@/components/pages/About')
     },
     {
       path: '/registration',
       name: 'Registration',
-      component: Registration
+      component: () => import('@/components/pages/Registration')
     },
     {
       path: '/home',
       name: 'Home',
-      component: Home
+      component: () => import('@/components/pages/Home')
     },
     {
       path: '/account',
       name: 'Account',
-      component: Account
+      component: () => import('@/components/pages/Account')
     },
     {
       path: '/sweepstake',
       name: 'Sweepstake',
-      component: Sweepstake
+      component: () => import('@/components/pages/Sweepstake')
     },
     // Does not know how to handle 404 errors. Might want to build in a catch all page right here.
     {
       path: '/404',
       name: 'MissingPage',
-      component: MissingPage
+      component: () => import('@/components/pages/MissingPage')
     }
   ]
 })
