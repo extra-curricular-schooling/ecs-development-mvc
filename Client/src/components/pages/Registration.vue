@@ -16,7 +16,7 @@ export default {
   },
   data () {
     return {
-      msg: 'This is a request'
+      msg: 'Join ExtraCurricular Schooling Now!'
     }
   },
   created () {
