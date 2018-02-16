@@ -10,10 +10,17 @@ namespace ecs_dev_server.Models
     public enum Permissions
     {
         //Defined Permissions
+        Create,
+        Read,
+        Update,
+        Delete
     }
     public class AccountType
     {
-        [Key]
-        public string TypeName { get; set; }
+        [Key, Required, Display(Name = "Role Name")]
+        public string RoleName { get; set; }
+
+        public Permissions? Permissions { get; set; }
+        
     }
 }

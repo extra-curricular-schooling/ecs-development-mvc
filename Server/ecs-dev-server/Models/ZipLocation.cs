@@ -9,17 +9,20 @@ namespace ecs_dev_server.Models
 {
     public class ZipLocation
     {
-        [Key]
-        public int ZipCode { get; set; }
+        //[Required]
+        [Key, Display(Name = "Zip Code"), StringLength(10, MinimumLength = 5, ErrorMessage = "Zipcode must be 5-10 characters")] 
+        public string ZipCode { get; set; }
         
+        [Required]
         public string City { get; set; }
 
+        [Required]
         public string State { get; set; }
 
         public int Latitude { get; set; }
 
         public int Longitude { get; set; }
 
-        public List<User> Users { get; set; }
+        //public List<User> Users { get; set; }
     }
 }

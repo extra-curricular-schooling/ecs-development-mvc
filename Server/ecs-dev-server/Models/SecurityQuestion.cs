@@ -9,9 +9,10 @@ namespace ecs_dev_server.Models
 {
     public class SecurityQuestion
     {
-        [Key]
+        [Key, Required, Display(Name = "Security Questions"), StringLength(50)]
         public string SecurityQuestions { get; set; }
 
-        public ICollection<Account> AccountAnswering { get; set; }
+        [Display(Name = "Account Answering")]
+        public virtual ICollection<Account> AccountAnswering { get; set; }
     }
 }

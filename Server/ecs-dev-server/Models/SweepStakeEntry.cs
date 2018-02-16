@@ -9,8 +9,11 @@ namespace ecs_dev_server.Models
 {
     public class SweepStakeEntry
     {
-        [Key]
+        [Key, Required, DataType(DataType.Date), Display(Name = "Purchase Timestamp" )]
+        [DisplayFormat(DataFormatString = "{0: yyyy-MM-dd", ApplyFormatInEditMode = true)]
+        //[ForeignKey("SweepstakeID, Username")]
         public DateTime PurchaseDateTime { get; set; }
-        public int cost { get; set; }
+
+        public int Cost { get; set; }
     }
 }

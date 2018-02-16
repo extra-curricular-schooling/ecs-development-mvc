@@ -9,9 +9,10 @@ namespace ecs_dev_server.Models
 {
     public class InterestTag
     {
-        [Key]
+        [Key, Required, Display(Name = "Tag Name")]
         public string TagName { get; set; }
 
-        public ICollection<Account> AccountSelecting { get; set; }
+        [Display(Name = "Account Selecting")]
+        public virtual ICollection<Account> AccountSelecting { get; set; }
     }
 }
