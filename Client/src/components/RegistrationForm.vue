@@ -63,8 +63,8 @@
       I have read and agreed to the <a href="#" style="color:dodgerblue">Terms & Conditions</a>.</label>
 
       <div class="clearfix">
-        <button type="button" class="cancel-btn">Cancel</button>
-        <button class="register-btn" v-on:click.prevent="submit">Register</button>
+        <button type="button" class="cancelbtn">Cancel</button>
+        <button class="registerbtn" v-on:click.prevent="submit">Register</button>
       </div>
   </form>
 </template>
