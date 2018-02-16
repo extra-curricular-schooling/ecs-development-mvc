@@ -26,7 +26,7 @@
 
       <div class="clearfix">
         <button type="button" class="cancelbtn">Cancel</button>
-        <button type="submit" class="registerbtn">Register</button>
+        <button class="registerbtn" v-on:click.prevent="submit">Register</button>
       </div>
     </div>
   </form>
@@ -41,7 +41,7 @@ export default {
       // This is not a correct path... Please fix when available.
       axios({
         method: 'GET',
-        url: 'https://localhost/registration/SayHello',
+        url: 'https://localhost:44313/registration/SayHello',
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Credentials': true

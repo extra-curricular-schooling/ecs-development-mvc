@@ -15,7 +15,7 @@
     <RootNamespace>ecs_dev_server</RootNamespace>
     <AssemblyName>ecs-dev-server</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44313</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
@@ -174,7 +174,7 @@
     <Compile Include="Controllers\SweepstakeAdminController.cs" />
     <Compile Include="Controllers\SweepstakeController.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
-    <Compile Include="CORS\AllowCrossSiteJsonAttribute.cs" />
+    <Compile Include="CORS\AllowCORSFilter.cs" />
     <Compile Include="ECSContext.cs" />
     <Compile Include="DotNetOpenAuth.LinkedInOAuth2\LinkedInOAuth2Client.cs" />
     <Compile Include="Global.asax.cs">
@@ -240,7 +240,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51844</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44313/</IISUrl>
+          <IISUrl>https://localhost:44313</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
