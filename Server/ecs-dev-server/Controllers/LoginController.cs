@@ -8,10 +8,15 @@ namespace ecs_dev_server.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
-        public ActionResult Index()
+        /// <summary>
+        /// This Action Method needs to receive data from SSO when registering an account in SSO.
+        /// </summary>
+        /// <returns>An HTTP Response</returns>
+        [HttpPost]
+        public void ReceiveSSOInfo()
         {
-            return View();
+            // We need to complete the registration in-app after the user attempts to login.
+            // return HttpResponse;
         }
     }
 }

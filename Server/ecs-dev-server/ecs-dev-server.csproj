@@ -15,7 +15,7 @@
     <RootNamespace>ecs_dev_server</RootNamespace>
     <AssemblyName>ecs-dev-server</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44313</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
@@ -171,10 +171,10 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Controllers\ResetPasswordController.cs" />
     <Compile Include="Controllers\SweepstakeAdminController.cs" />
     <Compile Include="Controllers\SweepstakeController.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
-    <Compile Include="CORS\AllowCrossSiteJsonAttribute.cs" />
     <Compile Include="ECSContext.cs" />
     <Compile Include="DotNetOpenAuth.LinkedInOAuth2\LinkedInOAuth2Client.cs" />
     <Compile Include="Global.asax.cs">
@@ -216,6 +216,7 @@
     <Folder Include="Views\Login\" />
     <Folder Include="Views\Logout\" />
     <Folder Include="Views\Registration\" />
+    <Folder Include="Views\ResetPassword\" />
     <Folder Include="Views\SweepstakeAdmin\" />
     <Folder Include="Views\Sweepstake\" />
     <Folder Include="Views\Test\" />
@@ -224,6 +225,12 @@
     <EmbeddedResource Include="Migrations\201802050241470_ECSContext.resx">
       <DependentUpon>201802050241470_ECSContext.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cors\Cors.csproj">
+      <Project>{6d6d0489-2761-486c-afba-3c32ea87bb5b}</Project>
+      <Name>Cors</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
