@@ -1,5 +1,6 @@
 <template>
-  <form>
+  <!-- Main Registration Fields -->
+  <form class="registration-fields">
     <p>Please register your information to get started.</p>
     <fieldset>
       <legend>Basic Info</legend>
@@ -55,17 +56,18 @@
       <input type="text" placeholder="Answer 3" name="answer3" required><br>
     </fieldset>
 
-      <label>
-      <input type="checkbox" checked="checked" name="rememberme-box" style="margin-bottom:12px">Remember me</label><br>
+    <label>
+    <input type="checkbox" checked="checked" name="rememberme-box" style="margin-bottom:12px">Remember me</label><br>
 
-      <label>
-      <input type="checkbox" name="agreement-box" style="margin-bottom:12px">
-      I have read and agreed to the <a href="#" style="color:dodgerblue">Terms & Conditions</a>.</label>
+    <label>
+    <input type="checkbox" name="agreement-box" style="margin-bottom:12px">
+    I have read and agreed to the <a href="#" style="color:dodgerblue">Terms & Conditions</a>.</label>
 
-      <div class="clearfix">
-        <button type="button" class="cancelbtn">Cancel</button>
-        <button class="registerbtn" v-on:click.prevent="submit">Register</button>
-      </div>
+    <div class="clearfix">
+      <router-link to="/" tag="button">Cancel</router-link>
+      <button class="registerbtn" v-on:click.prevent="submit">Register</button>
+    </div>
+    <!-- Terms and Conditions Modal -->
   </form>
 </template>
 
@@ -73,6 +75,8 @@
 import axios from 'axios'
 
 export default {
+  components: {
+  },
   methods: {
     submit: () => {
       // This is not a correct path... Please fix when available.
@@ -98,7 +102,7 @@ export default {
   box-sizing: border-box;
 }
 
-  button {
+button {
   background-color: #E8E9E4;
   color: black;
   padding: 14px 20px;
@@ -107,51 +111,51 @@ export default {
   cursor: pointer;
   width: 270px;
   opacity: 0.9;
-  }
+}
 
-  button:hover {
+button:hover {
     opacity:1;
-  }
+}
 
-  fieldset {
+fieldset {
   margin-bottom: 10px;
   border-color: #D3DCE5;
   border-width:  5px;
   background-color: #F8FCFB;
-  }
+}
 
-  form {
+form {
   max-width: 550px;
   margin: 10px auto;
   padding: 0px 0px;
   border-radius: 8px;
   text-align: left;
-  }
+}
 
-  hr {
+hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
-  }
+}
 
-  input[type=text], input[type=password] {
+input[type=text], input[type=password] {
   width: 500px;
   padding: 10px;
   margin: 5px 0 25px 0;
   display: inline-block;
   border: none;
   background: #E8E9E4;
-  }
+}
 
-  legend {
+legend {
   font-size: 1.4em;
-  }
+}
 
-  label.required-data:after {
+label.required-data:after {
   content: " *";
   color: red;
-  }
+}
 
-  p {
+p {
   text-align: center;
-  }
+}
 </style>

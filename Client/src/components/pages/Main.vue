@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <login-box></login-box>
     <h2>Essential Links</h2>
     <ul>
       <li>
@@ -84,10 +85,12 @@
 </template>
 
 <script>
+import loginBox from '@/components/LoginBox'
 // import DefaultLayout from '@/layouts/Default'
 export default {
   name: 'Main',
   components: {
+    loginBox
     // DefaultLayout
     // This is causing an ambiguous root error when rendering.
   },
