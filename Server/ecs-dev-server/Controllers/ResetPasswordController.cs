@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ecs_dev_server.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,22 +16,42 @@ namespace ecs_dev_server.Controllers
         [HttpPost]
         public ActionResult SendSSOInfo()
         {
-            // This needs to send data from the App to SSO for notifying that a User has been made.
-            // We might need to use a JSON Serializer to convert from JSON to Models and vice-versa.
-            // Newtonsoft is good for this use.
+            // After you finish the resetpassword action, we need to send the finished information to the SSO.
 
-            return Json("");
+            // Call request service to make a request to the SSO.
+            using (var httpClient = new HttpClientService(""))
+            {
+                // The request should talk to the SSO controller to talk to the database.
+                // The request should handle all successes and errors, or pass it off.
+
+            }
+
+            // We then need to save the User to our database.
+            //using(var context = new ECSContext())
+            //{
+
+            //}
+
+            // The return should be a success response to the client.
+            return Json("Good to Go!");
         }
 
 
-        //[HttpPost]
-        //public ActionResult ReceiveSSOInfo()
-        //{
-        //    // This needs to receive data from SSO when registering an account in SSO.
+        [HttpPost]
+        public ActionResult ReceiveSSOInfo()
+        {
+            // Call the ResponseService to handle the SSO registration request. Proccess any information.
+            using (var httpClient = new HttpClientService(""))
+            {
+                // We need to push this information to the database.
+                //using(var context = new ECSContext())
+                //{
 
-        //    // We need to complete the registration in-app after the user attempts to login.
+                //}
 
-        //    return Json("");
-        //}
+                // Return successful response?
+                return Json("");
+            }
+        }
     }
 }

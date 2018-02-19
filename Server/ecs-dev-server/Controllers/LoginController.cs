@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ecs_dev_server.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,10 +14,17 @@ namespace ecs_dev_server.Controllers
         /// </summary>
         /// <returns>An HTTP Response</returns>
         [HttpPost]
-        public void ReceiveSSOInfo()
+        public ActionResult ReceiveSSOInfo()
         {
-            // We need to complete the registration in-app after the user attempts to login.
-            // return HttpResponse;
+            // Call the ResponseService to handle the SSO login request. 
+            using (var httpClient = new HttpClientService(""))
+            {
+                // Proccess any information.
+                // Take the processed information and call necessary login methods.
+
+                // Return successful response?
+                return Json("");
+            }
         }
     }
 }
