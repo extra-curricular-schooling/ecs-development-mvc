@@ -1,12 +1,11 @@
 ﻿using DotNetOpenAuth.LinkedInOAuth2;
+using ecs_dev_server.Services;
 using Microsoft.AspNet.Membership.OpenAuth;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Security.Claims;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using static ecs_dev_server.Controllers.AuthController;
 
 namespace ecs_dev_server.Controllers
 {
@@ -118,44 +117,38 @@ namespace ecs_dev_server.Controllers
             return Redirect(_clientUri);
         }
 
-        private static bool ValidateToken(string token, out string username)
-        {
-            username = null;
-            var simplePrinciple = JwtManager.GetPrincipal(token);
-            var identity = simplePrinciple.Identity as ClaimsIdentity;
-            if (identity == null) return false;
-            if (!identity.IsAuthenticated) return false;
-            var usernameClaim = identity.FindFirst(ClaimTypes.Name);
-            username = usernameClaim?.Value;
-            if (string.IsNullOrEmpty(username)) return false;
-            // More validate to check whether username exists in system  
-            return true;
-        }
-
         [AllowAnonymous]
-        public ActionResult RedirectToLinkedIn()
+        public ActionResult RedirectToLinkedIn(string authtoken)
         {
-            if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("auth_token"))
+            string username;
+            if (JwtManager.ValidateToken(authtoken, out username))
             {
-                var cookie = Request.Cookies.Get("auth_token");
-                var token = cookie.Value;
-
-                string username;
-                if (ValidateToken(token, out username))
-                {
-                    string provider = "linkedin";
-                    string returnUrl = "";
-                    return new ExternalLoginResult(provider, Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
-                }
-                else
-                {
-                    return new EmptyResult();
-                }
+                string provider = "linkedin";
+                string returnUrl = "https://localhost:44313/OAuth/ExternalLoginCallback";
+                return new ExternalLoginResult(provider, Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
             }
             else
             {
-                return new ContentResult();
+                Response.StatusCode = 401;
+                return new EmptyResult();
             }
+            //if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("auth_token"))
+            //{
+            //    var cookie = Request.Cookies.Get("auth_token");
+            //    var token = cookie.Value;
+
+            //    string username;
+            //    if (ValidateToken(token, out username))
+            //    {
+            //        string provider = "linkedin";
+            //        string returnUrl = "";
+            //        return new ExternalLoginResult(provider, Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
+            //    }
+            //    else
+            //    {
+            //        return new EmptyResult();
+            //    }
+            //}
         }
     }
 }

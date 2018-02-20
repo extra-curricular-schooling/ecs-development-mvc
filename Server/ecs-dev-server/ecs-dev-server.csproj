@@ -214,6 +214,7 @@
     <Compile Include="Services\IJsonConverter.cs" />
     <Compile Include="Services\JsonConverterService.cs" />
     <Compile Include="Services\HttpClientService.cs" />
+    <Compile Include="Services\JwtManager.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
