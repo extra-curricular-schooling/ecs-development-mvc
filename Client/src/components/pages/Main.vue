@@ -1,114 +1,55 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <login-box></login-box>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
-  </div>
+  <section class="hero is-light">
+    <div class="hero-body">
+      <nav class="level">
+        <div class="level-left">
+          <div class="box">
+            <figure class="image is-128x128">
+              <img src="https://bulma.io/images/placeholders/128x128.png">
+            </figure>
+          </div>
+        </div>
+        <span class="level-item has-text-centered">
+          <div class="box">
+            <div class="content">
+              <h1>What we are about.</h1>
+              <p>
+                We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defense, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.
+              </p>
+            </div>
+          </div>
+        </span>
+      </nav>
+    </div>
+  </section>
 </template>
 
 <script>
-import loginBox from '@/components/LoginBox'
+/* eslint-disable */
 // import DefaultLayout from '@/layouts/Default'
 export default {
-  name: 'Main',
+  name: "Main",
   components: {
     loginBox
     // DefaultLayout
     // This is causing an ambiguous root error when rendering.
   },
-  data () {
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+      msg: "Welcome to Your Vue.js App"
+    };
   },
   methods: {
     // this.$router will talk to the vue-router (which is linked to the vue instance) to navigate to different pages.
     // this.$store will talk to the vuex store (which is linked to the vue instance) to get global data
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 ul {

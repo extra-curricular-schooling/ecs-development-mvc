@@ -1,6 +1,5 @@
 ﻿using DotNetOpenAuth.LinkedInOAuth2;
 using Microsoft.AspNet.Membership.OpenAuth;
-using Microsoft.Web.WebPages.OAuth;
 
 namespace ecs_dev_server
 {

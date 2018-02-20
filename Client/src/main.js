@@ -6,6 +6,9 @@ import App from './App'
 import router from './router'
 import store from './store/store'
 import { sync } from 'vuex-router-sync'
+// eslint-disable-next-line
+import Bulma from 'bulma'
+import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
 
 // require('./assets/sass/main.scss');
 
@@ -17,6 +20,6 @@ new Vue({
   el: '#app',
   router,
   store,
-  components: { App },
+  components: { App, FontAwesomeIcon },
   template: '<App/>'
 })

@@ -1,51 +1,24 @@
 ﻿using DotNetOpenAuth.LinkedInOAuth2;
+using ecs_dev_server.CORS;
 using Microsoft.AspNet.Membership.OpenAuth;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.Web.WebPages.OAuth;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
+using static ecs_dev_server.Controllers.AuthController;
 
 namespace ecs_dev_server.Controllers
 {
     [RequireHttps]
     public class OAuthController : Controller
     {
-        internal class ExternalLoginResult : ActionResult
-        {
-            public ExternalLoginResult(string provider, string returnUrl)
-            {
-                Provider = provider;
-                ReturnUrl = returnUrl;
-            }
+        #region Constants and fields
+        private readonly string _clientUri = "http://localhost:8080/";
 
-            public string Provider { get; private set; }
-            public string ReturnUrl { get; private set; }
-
-            public override void ExecuteResult(ControllerContext context)
-            {
-                // Request authentication from the provider specified by 
-                // redirecting the user to the service's login page.
-                OpenAuth.RequestAuthentication(Provider, ReturnUrl);
-                //OAuthWebSecurity.RequestAuthentication(Provider);
-            }
-        }
-
-        // GET: Auth
-        [AllowAnonymous]
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        [AllowAnonymous]
-        public ActionResult RedirectToLinkedIn()
-        {
-            string provider = "linkedin";
-            string returnUrl = "";
-            return new ExternalLoginResult(provider, Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
-        }
+        public object JsonWebToken { get; private set; }
+        #endregion
 
         [AllowAnonymous]
         public ActionResult ExternalLoginCallback(string returnUrl)
@@ -72,7 +45,6 @@ namespace ecs_dev_server.Controllers
 
             var redirectUrl = Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl });
             var authResult = OpenAuth.VerifyAuthentication(redirectUrl);
-            //var authResult = OAuthWebSecurity.VerifyAuthentication(redirectUrl);
 
             string providerDisplayName = OpenAuth.GetProviderDisplayName(ProviderName);
 
@@ -107,14 +79,84 @@ namespace ecs_dev_server.Controllers
                     accessToken = authResult.ExtraData["accesstoken"];
                 }
                 var userInfo = new List<object>();
-                userInfo.Add(new {
-                                    ProviderDisplayName = providerDisplayName,
-                                    ProviderUserId = providerUserId,
-                                    FirstName = firstName,
-                                    LastName = lastName,
-                                    Email = email,
-                                    AccessToken = accessToken});
-                return Json(userInfo, JsonRequestBehavior.AllowGet);
+                userInfo.Add(new
+                {
+                    ProviderDisplayName = providerDisplayName,
+                    ProviderUserId = providerUserId,
+                    FirstName = firstName,
+                    LastName = lastName,
+                    Email = email,
+                    AccessToken = accessToken
+                });
+
+                return RedirectToAction("RedirectToClient");
+            }
+        }
+
+        internal class ExternalLoginResult : ActionResult
+        {
+            public ExternalLoginResult(string provider, string returnUrl)
+            {
+                Provider = provider;
+                ReturnUrl = returnUrl;
+            }
+
+            public string Provider { get; private set; }
+            public string ReturnUrl { get; private set; }
+
+            public override void ExecuteResult(ControllerContext context)
+            {
+                // Request authentication from the provider specified by 
+                // redirecting the user to the service's login page.
+                OpenAuth.RequestAuthentication(Provider, ReturnUrl);
+            }
+        }
+
+        // GET: Auth
+        [AllowAnonymous]
+        public ActionResult RedirectToClient()
+        {
+            return Redirect(_clientUri);
+        }
+
+        private static bool ValidateToken(string token, out string username)
+        {
+            username = null;
+            var simplePrinciple = JwtManager.GetPrincipal(token);
+            var identity = simplePrinciple.Identity as ClaimsIdentity;
+            if (identity == null) return false;
+            if (!identity.IsAuthenticated) return false;
+            var usernameClaim = identity.FindFirst(ClaimTypes.Name);
+            username = usernameClaim?.Value;
+            if (string.IsNullOrEmpty(username)) return false;
+            // More validate to check whether username exists in system  
+            return true;
+        }
+
+        [AllowAnonymous]
+        [AllowCrossSiteJson]
+        public ActionResult RedirectToLinkedIn()
+        {
+            if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("auth_token"))
+            {
+                var cookie = Request.Cookies.Get("auth_token");
+                var token = cookie.Value;
+
+                string username;
+                if (ValidateToken(token, out username))
+                {
+                    string provider = "linkedin";
+                    string returnUrl = "";
+                    return new ExternalLoginResult(provider, Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
+                }
+                else
+                {
+                    return new EmptyResult();
+                }
+            }
+            else
+            {
+                return new ContentResult();
             }
         }
     }

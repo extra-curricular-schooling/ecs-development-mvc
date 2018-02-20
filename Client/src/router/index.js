@@ -40,6 +40,11 @@ export default new Router({
       path: '/404',
       name: 'MissingPage',
       component: () => import('@/components/pages/MissingPage')
+    },
+    {
+      path: '/linkedin',
+      name: 'LinkedIn',
+      component: () => import('@/components/pages/LinkedIn')
     }
   ]
 })
