@@ -1,5 +1,4 @@
-﻿using ecs_dev_server.CORS;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -82,7 +81,6 @@ namespace ecs_dev_server.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        [AllowCrossSiteJson]
         public HttpStatusCodeResult GenerateCookie()
         {
             string token = JwtManager.GenerateToken("luis");

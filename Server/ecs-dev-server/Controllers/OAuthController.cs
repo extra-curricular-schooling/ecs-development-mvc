@@ -1,5 +1,4 @@
 ﻿using DotNetOpenAuth.LinkedInOAuth2;
-using ecs_dev_server.CORS;
 using Microsoft.AspNet.Membership.OpenAuth;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -134,7 +133,6 @@ namespace ecs_dev_server.Controllers
         }
 
         [AllowAnonymous]
-        [AllowCrossSiteJson]
         public ActionResult RedirectToLinkedIn()
         {
             if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("auth_token"))
