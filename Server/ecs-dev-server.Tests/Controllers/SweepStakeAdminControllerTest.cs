@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ecs_dev_server.Tests.Controllers
 {
-    class AccountAdminControllerFacts
+    class SweepStakeAdminControllerTest
     {
     }
 }

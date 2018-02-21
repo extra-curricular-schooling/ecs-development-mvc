@@ -11,7 +11,7 @@ namespace ecs_dev_server.Tests.Services
     {
 
     }
-    public class JsonConverterServiceFacts
+    public class JsonConverterServiceTest
     {
 
     }

@@ -1,11 +1,14 @@
 ﻿using System;
 using Xunit;
 using Moq;
+using ecs_dev_server.Services;
+using ecs_dev_server.Models;
+using ecs_dev_server.DTOs;
 
 namespace ecs_dev_server.Tests
 {
     // The Class we are testing is the outer class.
-    public class RegistrationControllerFacts
+    public class RegistrationControllerTest
     {
         // Methods are inner classes
         public class SayHelloMethod
@@ -28,7 +31,9 @@ namespace ecs_dev_server.Tests
             [Fact]
             public void ConvertDTOToJson()
             {
-                // Test code
+                SSOAccountDTO sSOAccountDTO = new SSOAccountDTO();
+                var x = JsonConverterService.SerializeObject(sSOAccountDTO);
+                
             }
 
             [Fact]

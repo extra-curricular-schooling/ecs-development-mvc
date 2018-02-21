@@ -13,10 +13,10 @@ namespace ecs_dev_server
     {
         protected void Application_Start()
         {
+            AuthConfig.RegisterAuth();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            AuthConfig.RegisterAuth();
         }
     }
     ///*

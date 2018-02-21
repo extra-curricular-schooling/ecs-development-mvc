@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ecs_dev_server.Tests.Controllers
+namespace ecs_dev_server.Tests.Services
 {
-    class SweepStakeAdminController
+    public class HttpClientServiceTest
     {
+
     }
 }

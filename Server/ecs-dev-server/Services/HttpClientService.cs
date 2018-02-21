@@ -1,67 +1,93 @@
 ﻿using System;
+using System.IO;
 using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ecs_dev_server.Services
 {
     // Use System.net.http.httpclient to receive and request
-    public class HttpClientService : IHttpClient, IDisposable
+    public class HttpClientService: IHttpClient, IHttpClientAsync, IDisposable
     {
-        public void Dispose() {}
+        public void Dispose() { }
 
-        private HttpClient client;
-        public HttpClientService(String uri)
+        // Using Singleton Pattern improves the performance because only one connection is needed
+        // but we can still implement interfaces.
+
+        private static HttpClientService instance;
+
+        private HttpClientService() { }
+
+        public static HttpClientService Instance
         {
-            client = new HttpClient
+            get
             {
-                BaseAddress = new Uri(uri)
-            };
+                if (instance == null)
+                {
+                    instance = new HttpClientService();
+                }
+                return instance;
+            }
         }
 
-        //HTTP GET
-        public void Get(String uriExtension)
+        public HttpResponseMessage Get(string url)
         {
             // Appends the end of the BaseAddress with the parameter.
-            var responseTask = client.GetAsync(uriExtension);
+            var responseTask = instance.GetAsync(url);
             responseTask.Wait();
 
             var result = responseTask.Result;
             if (result.IsSuccessStatusCode)
             {
-                // Do some stuff with it.
-                // return result;
-                
+                return result;
             }
             else
             {
                 // Go into some error handling for the code.
+
+                // THIS NEEDS MORE WORK
+                return new HttpResponseMessage(result.StatusCode);
+
             }
         }
 
-        //HTTP POST
-        public void Post<T>(String uriExtension, T obj)
+        public HttpResponseMessage PostAsJson(string url, string jsonString)
         {
-            
+            // Format obj into HttpContent
+            var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
             // Required additional package: System.Net.Http.Formatting.Extension
-            var postTask = client.PostAsJsonAsync(uriExtension, obj);
+            var postTask = instance.PostAsJsonAsync(url, content);
             postTask.Wait();
 
             var result = postTask.Result;
             if (result.IsSuccessStatusCode)
             {
-
-                var readTask = result.Content.ReadAsAsync<T>();
-                readTask.Wait();
-
-                var dataObject = readTask.Result;
+                // Successful Post
+                return result;
 
                 // Do stuff with the resulting dataObject
             }
             else
             {
                 // Go into some error handling for the Post error.
+
+                // THIS NEEDS MORE WORK!!
+                return new HttpResponseMessage(result.StatusCode);
             }
-            
         }
+
+        public async Task<HttpResponseMessage> GetAsync(string url)
+        {
+            return await instance.GetAsync(url);
+        }
+
+        public async Task<HttpResponseMessage> PostAsJsonAsync(string url, HttpContent content)
+        {
+            return await instance.PostAsJsonAsync(url, content);
+        }
+
+        
         
     }
 }

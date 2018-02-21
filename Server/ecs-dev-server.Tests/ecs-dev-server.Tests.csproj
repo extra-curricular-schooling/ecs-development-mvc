@@ -69,19 +69,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AccountAdminControllerFacts.cs" />
-    <Compile Include="Controllers\HomeControllerFacts.cs" />
-    <Compile Include="Controllers\LinkedInControllerFacts.cs" />
-    <Compile Include="Controllers\LoginControllerFacts.cs" />
-    <Compile Include="Controllers\LogoutControllerFacts.cs" />
-    <Compile Include="Controllers\OAuthControllerFacts.cs" />
-    <Compile Include="Controllers\RegistrationControllerFacts.cs" />
-    <Compile Include="Controllers\ResetPasswordControllerFacts.cs" />
-    <Compile Include="Controllers\SweepStakeAdminController.cs" />
-    <Compile Include="Controllers\SweepstakeControllerFacts.cs" />
+    <Compile Include="Controllers\AccountAdminControllerTest.cs" />
+    <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Controllers\LinkedInControllerTest.cs" />
+    <Compile Include="Controllers\LoginControllerTest.cs" />
+    <Compile Include="Controllers\LogoutControllerTest.cs" />
+    <Compile Include="Controllers\OAuthControllerTest.cs" />
+    <Compile Include="Controllers\RegistrationControllerTest.cs" />
+    <Compile Include="Controllers\ResetPasswordControllerTest.cs" />
+    <Compile Include="Controllers\SweepStakeAdminControllerTest.cs" />
+    <Compile Include="Controllers\SweepstakeControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\HttpClientServiceFacts.cs" />
-    <Compile Include="Services\JsonConverterServiceFacts.cs" />
+    <Compile Include="Services\HttpClientServiceTest.cs" />
+    <Compile Include="Services\JsonConverterServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -91,6 +91,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Migrations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ecs-dev-server\ecs-dev-server.csproj">
+      <Project>{5f44024d-5e93-44f6-bbd7-c767f8c8902f}</Project>
+      <Name>ecs-dev-server</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
