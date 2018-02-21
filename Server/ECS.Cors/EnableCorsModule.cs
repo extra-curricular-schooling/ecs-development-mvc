@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 
-namespace Cors
+namespace ECS.Cors
 {
-    public class EnableCorsModule : IHttpModule
+    public class EnableCorsModule
     {
         public void Init(HttpApplication context)
         {
