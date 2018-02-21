@@ -1,5 +1,6 @@
 ﻿using ecs_dev_server.DTOs;
 using ecs_dev_server.Filters;
+using ecs_dev_server.Models;
 using ecs_dev_server.Services;
 using Newtonsoft.Json;
 using System;
@@ -43,8 +44,10 @@ namespace ecs_dev_server.Controllers
 
             // Take the processed information and call necessary login methods.
 
+            return Json(JsonConvert.SerializeObject(input), JsonRequestBehavior.AllowGet);
+
             // Return successful response
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
+            //return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
 }
