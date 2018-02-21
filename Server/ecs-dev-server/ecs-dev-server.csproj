@@ -249,13 +249,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cors\Cors.csproj">
-      <Project>{6d6d0489-2761-486c-afba-3c32ea87bb5b}</Project>
-      <Name>Cors</Name>
-    </ProjectReference>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <ProjectReference Include="..\ECS.Cors\ECS.Cors.csproj">
+      <Project>{56dd431d-d64b-4f0d-a949-cf7f39a8c6d2}</Project>
+      <Name>ECS.Cors</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Cors;
+using ECS.Cors;
 
 namespace ecs_dev_server
 {
