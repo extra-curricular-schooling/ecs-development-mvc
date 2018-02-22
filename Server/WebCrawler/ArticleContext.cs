@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace WebCrawler
 {
-    class ToStore : DbContext
+    class ArticleContext : DbContext
     {
         public DbSet<Article> Articles { get; set; }
 
