@@ -228,8 +228,8 @@ export default {
       })
         .then(response => console.log(response))
         .catch(response => console.log(response))
-    },
-/*    fetchSecurityQuestions: () => {
+    }
+    /*    fetchSecurityQuestions: () => {
       axios({
         method: 'GET',
         url: 'https://localhost:44313/registration/RequestSecurityQuestions'
