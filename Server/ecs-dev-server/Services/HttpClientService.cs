@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace ecs_dev_server.Services
 {
+    // This needs some sort of locking mechanism to ensure thread safety!!!
+
     // Use System.net.http.httpclient to receive and request
     public class HttpClientService: IHttpClient, IHttpClientAsync, IDisposable
     {

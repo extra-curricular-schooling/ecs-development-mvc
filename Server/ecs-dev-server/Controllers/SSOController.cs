@@ -18,28 +18,16 @@ namespace ecs_dev_server.Controllers
         [Route("Register")]
         public ActionResult Register()
         {
-            // Read Json from Post Body
+            // Read Json from POST body.
+            var json = ParseHttpService.ReadHttpPostBody(Request);
 
-            Stream req = Request.InputStream;
-            var json = RequestParseService.ReadHttpBody(req);
-
-            SSOAccountDTO input = null;
-            try
-            {
-                // assuming JSON.net/Newtonsoft library
-                input = JsonConvert.DeserializeObject<SSOAccountDTO>(json);
-            }
-
-            catch (Exception ex)
-            {
-                // Try and handle malformed POST body
-                return Content(ex.Source + "\n" + ex.Message + "\n" + ex.StackTrace);
-            }
+            // Deserialize the Json String
+            var partialUserAccount = JsonConvert.DeserializeObject<SSOAccountRegistrationDTO>(json);
 
             // Set some sort of flag up for the User in DB.
             // When they try and register in our app after SSO's registration, check the flag.
 
-            // Return a response to the caller.
+            // Return successful response
             return new HttpStatusCodeResult(HttpStatusCode.OK);
 
         }
@@ -48,13 +36,14 @@ namespace ecs_dev_server.Controllers
         [Route("ResetPassword")]
         public ActionResult ResetPassword() // I need the equivalent of [FromBody] to use for incoming JSON
         {
-            // Consume Json Incoming Requests
+            // Read Json from POST body.
+            var json = ParseHttpService.ReadHttpPostBody(Request);
+
+            // Deserialize the Json String
+            var partialUserAccount = JsonConvert.DeserializeObject<SSOAccountRegistrationDTO>(json);
 
             // We need to push this information to the database.
             //using(var context = new ECSContext())
-            //{
-
-            //}
 
             // Return successful response?
             return new HttpStatusCodeResult(HttpStatusCode.OK);

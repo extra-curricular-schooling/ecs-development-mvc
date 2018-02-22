@@ -14,63 +14,30 @@ namespace ecs_dev_server.Services
     /// </summary>
     public static class JsonConverterService
     {
-        public static dynamic DeserializeObject<dynamic>(dynamic obj)
+        public static T DeserializeObject<T>(String json)
         {
-            return JsonConvert.DeserializeObject<dynamic>(obj.ToString());
+            try
+            {
+                var obj = JsonConvert.DeserializeObject<T>(json);
+                if (obj != null)
+                {
+                    return obj;
+                }
+                throw new NullReferenceException();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Source + "\n" + ex.Message + "\n" + ex.StackTrace);
+
+                // Returns regardless. Should figure out how to correct the deserialziation.
+                return default(T);
+            }
+            
         }
 
         public static string SerializeObject<T>(T obj)
         {
             return JsonConvert.SerializeObject(obj);
         }
-
-        ///// <summary>
-        ///// Accepts a generic object T to convert into a Json object.
-        ///// </summary>
-        ///// <typeparam name="T"></typeparam>
-        ///// <param name="obj"></param>
-        ///// <returns>A stringified version of a Json object.</returns>
-        //public static string SerializeObject<T>(T obj)
-        //{
-        //    DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(T));
-        //    MemoryStream ms = new MemoryStream();
-        //    ser.WriteObject(ms, obj);
-        //    string jsonString = Encoding.UTF8.GetString(ms.ToArray());
-        //    ms.Close();
-        //    return jsonString;
-        //}
-
-        ///// <summary>
-        ///// Accepts a Json object and converts it into a generic object T.
-        ///// </summary>
-        ///// <typeparam name="T"></typeparam>
-        ///// <param name="jsonString"></param>
-        ///// <returns>An object of type T</returns>
-        //public static T DeserializeObject<T>(string jsonString)
-        //{
-        //    DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T));
-        //    MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString));
-        //    T obj = (T)serializer.ReadObject(ms);
-        //    return obj;
-        //}
     }
-
-
-
-    // Unused Code because the Newtonsoft.Json.ConvertJson does not handle generics well.
-
-    //public class UnusedJsonConverterService : IJsonConverter
-    //{
-    //    public T DeserializeObject<T>(String jsonStr)
-    //    {
-    //        return JsonConvert.DeserializeObject<T>(jsonStr);
-    //    }
-
-
-    //    public string SerializeObject<T>(T obj)
-    //    {
-    //        //return JsonConvert.SerializeObject<T>(obj);
-    //        return "";
-    //    }
-    //}
 }

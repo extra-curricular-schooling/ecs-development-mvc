@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ecs_dev_server.DTOs
 {
-    public class SSOAccountDTO
+    public class SSOAccountRegistrationDTO
     {
         public string Username { get; set; }
 

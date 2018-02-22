@@ -31,7 +31,7 @@ namespace ecs_dev_server.Tests
             [Fact]
             public void ConvertDTOToJson()
             {
-                SSOAccountDTO sSOAccountDTO = new SSOAccountDTO();
+                SSOAccountRegistrationDTO sSOAccountDTO = new SSOAccountRegistrationDTO();
                 var x = JsonConverterService.SerializeObject(sSOAccountDTO);
                 
             }

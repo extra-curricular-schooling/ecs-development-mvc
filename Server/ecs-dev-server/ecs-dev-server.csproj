@@ -187,7 +187,10 @@
     <Compile Include="Controllers\SweepstakeAdminController.cs" />
     <Compile Include="Controllers\SweepstakeController.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
-    <Compile Include="DTOs\SSOAccountDTO.cs" />
+    <Compile Include="DTOs\AccountQuestionsDTO.cs" />
+    <Compile Include="DTOs\AccountRegistrationDTO.cs" />
+    <Compile Include="DTOs\AccountCredentialsDTO.cs" />
+    <Compile Include="DTOs\SSOAccountRegistrationDTO.cs" />
     <Compile Include="ECSContext.cs" />
     <Compile Include="DotNetOpenAuth.LinkedInOAuth2\LinkedInOAuth2Client.cs" />
     <Compile Include="Filters\AjaxAttribute.cs" />
@@ -215,7 +218,7 @@
     <Compile Include="Services\JsonConverterService.cs" />
     <Compile Include="Services\HttpClientService.cs" />
     <Compile Include="Services\JwtManager.cs" />
-    <Compile Include="Services\RequestParseService.cs" />
+    <Compile Include="Services\ParseHttpService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

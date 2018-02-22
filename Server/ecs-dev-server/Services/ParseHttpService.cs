@@ -6,10 +6,11 @@ using System.Web;
 
 namespace ecs_dev_server.Services
 {
-    public static class RequestParseService
+    public static class ParseHttpService
     {
-        public static string ReadHttpBody(Stream req)
+        public static string ReadHttpPostBody(HttpRequestBase requestBase)
         {
+            Stream req = requestBase.InputStream;
             req.Seek(0, SeekOrigin.Begin);
             return new StreamReader(req).ReadToEnd();
         }

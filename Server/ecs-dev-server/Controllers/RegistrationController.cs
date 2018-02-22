@@ -13,45 +13,35 @@ namespace ecs_dev_server.Controllers
     [RoutePrefix("registration")]
     public class RegistrationController : Controller
     {
-        // GET: Registration
-        [HttpGet]
-        [Route("SayHello")]
-        public ActionResult SayHello()
+        [HttpPost]
+        [Route("RegisterUser")]
+        public ActionResult RegisterUser()
         {
-            return Json("Hello", JsonRequestBehavior.AllowGet);
+            // Read Json from POST body.
+            var json = ParseHttpService.ReadHttpPostBody(Request);
+
+            // Deserialize the Json String
+            var userAccount = JsonConvert.DeserializeObject<AccountRegistrationDTO>(json);
+
+            // Proccess any other information.
+
+            // Check SSO DB for User.
+            PostRegistrationToSSO(userAccount.Username);
+
+            // If successful, save user to app DB. If not successful, reject registration.
+            // using(ECSContext context = new ECSContext())
+
+            // Return successful response
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
-        /// <summary>
-        /// This needs to send data from the App to SSO for notifying that a User has been made.
-        /// </summary>
-        /// <param name="accountDTO"></param>
-
-        
-        [NonAction]
-        public ActionResult Index(SSOAccountDTO accountDTO)
+        private void PostRegistrationToSSO(string username)
         {
-            // Would I use IHttpClient instead of HttpClientService for dependency injection?
-            // This request needs to be called after the RegisterUser Action is called.
-            // After we finish registration, we need to send the finished information to the SSO.
-             
-            // Convert to pass to SSO.
-            String json = JsonConvert.SerializeObject(accountDTO);
-
-            // Call request service to make a request to the SSO.
-            // The request should handle all successes and errors, or pass it off.
-            // Change parameter to the URI of the SSO base. (i.e. "https://www.sso.org/")
-            
-            // Double check this URI after setting up the SSO.
-            using (HttpClientService client = HttpClientService.Instance)
+            using(HttpClientService client = HttpClientService.Instance)
             {
-                client.PostAsJson("https://yourdomain.com/Registration/ReceiveAPPInfo", json);
+                // Fix this up with a proper url.
+                client.PostAsJson("*****", JsonConvert.SerializeObject(username));
             }
-
-            // We then need to save the User to our database.
-            //using (var dbContext = new ECSContext())
-
-            // Everything should be functional at this point.
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
 }
