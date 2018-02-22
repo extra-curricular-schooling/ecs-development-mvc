@@ -10,8 +10,14 @@ namespace ecs_dev_server.Models
     public class Account
     {
         [Key]
+
+        [Required(ErrorMessage="The username is requried")]
+        [RegularExpression(@"^[a-zA-Z0-9~!@#$%^&*()_+].{8,120}$")]
         public string UserName { get; set; }
 
+        [Required(ErrorMessage="The password is requried")]
+        //[RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{8,120}$")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         public int Points { get; set; }

@@ -10,7 +10,7 @@ namespace ecs_dev_server.Controllers
     public class RegistrationController : Controller
     {
         /// <summary>
-        /// 
+        /// Method accepts request to submit form using the POST method over HTTP
         /// </summary>
         /// <remarks>Author: Scott Roberts</remarks>
         [HttpPost]
@@ -90,6 +90,9 @@ namespace ecs_dev_server.Controllers
             }
         }
 
+        /// <summary>
+        /// Method accepts request to fetch security questions using the GET method over HTTP
+        /// </summary>
         [AllowAnonymous]
         [HttpGet]
         public ActionResult RequestSecurityQuestions()

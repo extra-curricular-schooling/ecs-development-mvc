@@ -7,9 +7,15 @@ using System.Text;
 
 namespace ecs_dev_server.Services
 {
+    /// <summary>
+    /// Static service class to hash a salted password using SHA 256
+    /// </summary>
     public static class HashService
     {
-        private const int SaltSize = 64; // Base64
+        /// <summary>
+        /// 64-bit Salt property
+        /// </summary>
+        private const int SaltSize = 64; 
 
         /// <summary>
         /// Generates salt

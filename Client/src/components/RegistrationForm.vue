@@ -2,6 +2,7 @@
   <!-- Main Registration Form -->
   <form class="registration-form">
     <p class="warning field-element">* indicates a required field</p>
+    <!-- Begin required entry of basic user information -->
     <div class="is-field-group">
       <div class="field first-name">
         <label class="label field-element is-required">First Name</label>
@@ -64,6 +65,7 @@
       </div>
     </div>
 
+    <!-- Begin optional entry of mailing address info -->
     <div class="is-field-group">
       <div class="field mailing-address">
         <label class="label field-element">Mailing Address</label>
@@ -90,6 +92,7 @@
       </div>
     </div>
 
+    <!-- Begin Security Questions group -->
     <div class="is-field-group">
       <div class="field security-questions">
         <label class="label field-element is-required">Security Questions</label>
@@ -156,6 +159,7 @@
       </label>
     </div> -->
 
+    <!-- Form submission options -->
     <div class="field is-grouped is-grouped-centered form-buttons">
       <p class="control">
         <router-link to="/" tag="button" class="button is-link cancel-button">
@@ -180,13 +184,13 @@ export default {
   data () {
     return {
       user: {
-        username: '',
+        userName: '',
         password: '',
         // confirmPassword: '',
-        security_qas: [
-          { question: '', answer: '' },
-          { question: '', answer: '' },
-          { question: '', answer: '' }
+        securityQAs: [
+          { securityQuestion: '', securityAnswer: '' },
+          { securityQuestion: '', securityAnswer: '' },
+          { securityQuestion: '', securityAnswer: '' }
         ],
         email: '',
         firstName: '',
@@ -205,13 +209,13 @@ export default {
         method: 'POST',
         url: 'https://localhost:44313/registration/RegisterUser',
         data: {
-          username: this.user.username,
+          userName: this.user.username,
           password: this.user.password,
           // confirmPassword: this.user.confirmPassword,
-          security_qas: [
-            { question: this.user.question1, answer: this.user.answer1 },
-            { question: this.user.question2, answer: this.user.answer2 },
-            { question: this.user.question3, answer: this.user.answer3 }
+          securityQAs: [
+            { securityQuestion: this.user.question1, securityAnswer: this.user.answer1 },
+            { securityQuestion: this.user.question2, securityAnswer: this.user.answer2 },
+            { securityQuestion: this.user.question3, securityAnswer: this.user.answer3 }
           ],
           email: this.user.email,
           firstName: this.user.firstName,
@@ -228,8 +232,8 @@ export default {
       })
         .then(response => console.log(response))
         .catch(response => console.log(response))
-    },
-/*    fetchSecurityQuestions: () => {
+    }
+    /* fetchSecurityQuestions: () => {
       axios({
         method: 'GET',
         url: 'https://localhost:44313/registration/RequestSecurityQuestions'
