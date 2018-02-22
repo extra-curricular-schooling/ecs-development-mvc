@@ -7,8 +7,16 @@ using System.Web;
 
 namespace ECS.Cors
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks>Author: Scott Roberts</remarks>
     public class EnableCorsModule: IHttpModule
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public void Init(HttpApplication context)
         {
             context.BeginRequest += new EventHandler(this.CorsEnableAll);

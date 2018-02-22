@@ -8,6 +8,10 @@ namespace ecs_dev_server.Controllers
     [RoutePrefix("registration")]
     public class RegistrationController : Controller
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>Author: Scott Roberts</remarks>
         [HttpPost]
         [Route("RegisterUser")]
         public ActionResult RegisterUser()
@@ -30,6 +34,10 @@ namespace ecs_dev_server.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>Author: Scott Roberts</remarks>
         private void PostRegistrationToSSO(string username)
         {
             using(HttpClientService client = HttpClientService.Instance)

@@ -4,6 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
+/// <summary>
+/// 
+/// </summary>
+/// <remarks>Author: Scott Roberts</remarks>
 namespace ecs_dev_server.Services
 {
     public static class ParseHttpService

@@ -2,6 +2,10 @@
 
 namespace ecs_dev_server.Filters
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks>Author: Scott Roberts</remarks>
     public class AjaxAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
