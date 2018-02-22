@@ -6,21 +6,21 @@
       <div class="field first-name">
         <label class="label field-element is-required">First Name</label>
         <div class="control">
-          <input class="input" type="text" placeholder="First Name" required>
+          <input v-model="user.firstName" class="input" type="text" placeholder="First Name" required>
         </div>
       </div>
 
       <div class="field last-name">
         <label class="label field-element is-required">Last Name</label>
         <div class="control">
-          <input class="input" type="text" placeholder="Last Name" required>
+          <input v-model="user.lastName" class="input" type="text" placeholder="Last Name" required>
         </div>
       </div>
 
       <div class="field username">
         <label class="label field-element is-required">Username</label>
         <div class="control has-icons-left has-icons-right">
-          <input class="input" type="text" placeholder="Username" required>
+          <input v-model="user.username" class="input" type="text" placeholder="Username" required>
           <span class="icon is-small is-left">
             <i class="fas fa-user"></i>
           </span>
@@ -33,7 +33,7 @@
       <div class="field email-address">
         <label class="label field-element is-required">Email</label>
         <div class="control has-icons-left has-icons-right">
-          <input class="input" type="email" placeholder="Email" required>
+          <input v-model="user.email" class="input" type="email" placeholder="Email" required>
           <span class="icon is-small is-left">
             <i class="fas fa-envelope"></i>
           </span>
@@ -46,7 +46,7 @@
       <div class="field password">
         <label class="label field-element is-required">Password</label>
         <div class="control has-icons-left">
-          <input class="input" type="password" placeholder="************" required>
+          <input v-model="user.password" class="input" type="password" placeholder="************" required>
           <span class="icon is-small is-left">
             <i class="fas fa-lock"></i>
           </span>
@@ -56,7 +56,7 @@
       <div class="field confirm-password">
         <label class="label field-element is-required">Confirm Password</label>
         <div class="control has-icons-left">
-          <input class="input" type="password" placeholder="************" required>
+          <input v-model="user.confirmPassword" class="input" type="password" placeholder="************" required>
           <span class="icon is-small is-left">
             <i class="fas fa-lock"></i>
           </span>
@@ -103,7 +103,7 @@
       </div>
       <div class="field security-questions-answers">
         <div class="control">
-          <input class="input" type="text" placeholder="Answer 1" required>
+          <input v-model="user.answer1" class="input" type="text" placeholder="Answer 1" required>
         </div>
       </div>
 
@@ -118,7 +118,7 @@
       </div>
       <div class="field security-questions-answers">
         <div class="control">
-          <input class="input" type="text" placeholder="Answer 2" required>
+          <input v-model="user.answer2" class="input" type="text" placeholder="Answer 2" required>
         </div>
       </div>
 
@@ -133,7 +133,7 @@
       </div>
       <div class="field security-questions-answers">
         <div class="control">
-          <input class="input" type="text" placeholder="Answer 3" required>
+          <input v-model="user.answer3" class="input" type="text" placeholder="Answer 3" required>
         </div>
       </div>
     </div>
@@ -170,12 +170,38 @@ import axios from 'axios'
 export default {
   components: {
   },
+  data() {
+    return {
+      user: { // Skipping mailing address data for now
+        firstName: '',
+        lastName: '',
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        answer1: '',
+        answer2: '',
+        answer3: ''
+      },
+      errors: []
+    };
+  },
   methods: {
     submit: () => {
-      // This is not a correct path... Please fix when available.
       axios({
-        method: 'GET',
-        url: 'https://localhost:44313/registration/SayHello',
+        method: 'POST',
+        url: 'https://localhost:44313/registration/RegisterUser',
+        data: {
+          firstName: this.user.firstName,
+          lastName: this.user.lastName,
+          username: this.user.username,
+          email: this.user.email,
+          password: this.user.password,
+          confirmPassword: this.user.confirmPassword,
+          answer1: this.user.answer1,
+          answer2: this.user.answer2,
+          answer3: this.user.answer3
+        },
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Credentials': true
