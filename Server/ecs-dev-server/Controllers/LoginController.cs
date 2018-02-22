@@ -22,7 +22,7 @@ namespace ecs_dev_server.Controllers
             var json = ParseHttpService.ReadHttpPostBody(Request);
 
             // Deserialize the Json String
-            var credentials = JsonConvert.DeserializeObject<AccountCredentialsDTO>(json);
+            var credentials = JsonConverterService.DeserializeObject<AccountCredentialsDTO>(json);
 
             // Proccess any other information.
 

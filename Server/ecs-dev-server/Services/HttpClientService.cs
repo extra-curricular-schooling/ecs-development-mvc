@@ -11,6 +11,8 @@ namespace ecs_dev_server.Services
     // Use System.net.http.httpclient to receive and request
     public class HttpClientService: IHttpClient, IHttpClientAsync, IDisposable
     {
+        private HttpClient httpClient = new HttpClient();
+
         public void Dispose() { }
 
         // Using Singleton Pattern improves the performance because only one connection is needed
@@ -34,62 +36,54 @@ namespace ecs_dev_server.Services
 
         public HttpResponseMessage Get(string url)
         {
-            // Appends the end of the BaseAddress with the parameter.
-            var responseTask = instance.GetAsync(url);
-            responseTask.Wait();
-
-            var result = responseTask.Result;
-            if (result.IsSuccessStatusCode)
+            try
             {
-                return result;
+                var responseTask = httpClient.GetAsync(url);
+                responseTask.Wait();
+                return responseTask.Result;
             }
-            else
+            catch(Exception ex)
             {
-                // Go into some error handling for the code.
-
-                // THIS NEEDS MORE WORK
-                return new HttpResponseMessage(result.StatusCode);
-
+                // Fix up the error handling
+                Console.WriteLine(ex.Source + "\n" + ex.Message + "\n" + ex.StackTrace);
+                return null;
             }
+            
         }
 
         public HttpResponseMessage PostAsJson(string url, string jsonString)
         {
-            // Format obj into HttpContent
-            var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-
-            // Required additional package: System.Net.Http.Formatting.Extension
-            var postTask = instance.PostAsJsonAsync(url, content);
-            postTask.Wait();
-
-            var result = postTask.Result;
-            if (result.IsSuccessStatusCode)
+            try
             {
-                // Successful Post
-                return result;
+                // Format obj into HttpContent
+                var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
-                // Do stuff with the resulting dataObject
+                // Required additional package: System.Net.Http.Formatting.Extension
+                var postTask = httpClient.PostAsJsonAsync(url, content);
+                postTask.Wait();
+
+                // If successful, return the response.
+                var response = postTask.Result;
+                response.EnsureSuccessStatusCode();
+                return response;
             }
-            else
+            catch (Exception ex)
             {
-                // Go into some error handling for the Post error.
-
-                // THIS NEEDS MORE WORK!!
-                return new HttpResponseMessage(result.StatusCode);
+                // Fix up the error handling
+                Console.WriteLine(ex.Source + "\n" + ex.Message + "\n" + ex.StackTrace);
+                return null;
             }
+            
         }
 
         public async Task<HttpResponseMessage> GetAsync(string url)
         {
-            return await instance.GetAsync(url);
+            return await httpClient.GetAsync(url);
         }
 
         public async Task<HttpResponseMessage> PostAsJsonAsync(string url, HttpContent content)
         {
-            return await instance.PostAsJsonAsync(url, content);
+            return await httpClient.PostAsJsonAsync(url, content);
         }
-
-        
-        
     }
 }

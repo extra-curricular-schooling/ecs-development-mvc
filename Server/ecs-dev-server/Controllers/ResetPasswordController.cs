@@ -2,7 +2,6 @@
 using ecs_dev_server.DTOs;
 using ecs_dev_server.Filters;
 using ecs_dev_server.Services;
-using Newtonsoft.Json;
 using System.Net;
 using System.Web.Mvc;
 
@@ -23,7 +22,7 @@ namespace ecs_dev_server.Controllers
             var json = ParseHttpService.ReadHttpPostBody(Request);
 
             // Deserialize the Json String
-            var credentials = JsonConvert.DeserializeObject<AccountCredentialsDTO>(json);
+            var credentials = JsonConverterService.DeserializeObject<AccountCredentialsDTO>(json);
 
             // Proccess any other information.
 
@@ -47,7 +46,7 @@ namespace ecs_dev_server.Controllers
             var json = ParseHttpService.ReadHttpPostBody(Request);
 
             // Deserialize the Json String
-            var securityQuestions = JsonConvert.DeserializeObject<AccountQuestionsDTO>(json);
+            var securityQuestions = JsonConverterService.DeserializeObject<AccountQuestionsDTO>(json);
 
             // Proccess any other information.
 
@@ -67,7 +66,7 @@ namespace ecs_dev_server.Controllers
             var json = ParseHttpService.ReadHttpPostBody(Request);
 
             // Deserialize the Json String
-            var credentials = JsonConvert.DeserializeObject<AccountCredentialsDTO>(json);
+            var credentials = JsonConverterService.DeserializeObject<AccountCredentialsDTO>(json);
 
             // Proccess any other information.
 

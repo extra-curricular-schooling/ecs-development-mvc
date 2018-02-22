@@ -8,10 +8,6 @@ namespace ecs_dev_server.Controllers
 {
     public class LogoutController : Controller
     {
-        // GET: Logout
-        public ActionResult Index()
-        {
-            return View();
-        }
+        
     }
 }

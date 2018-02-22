@@ -8,10 +8,6 @@ namespace ecs_dev_server.Controllers
 {
     public class SweepstakeController : Controller
     {
-        // GET: Sweepstake
-        public ActionResult Index()
-        {
-            return View();
-        }
+        
     }
 }

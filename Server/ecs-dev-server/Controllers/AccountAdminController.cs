@@ -8,10 +8,6 @@ namespace ecs_dev_server.Controllers
 {
     public class AccountAdminController : Controller
     {
-        // GET: AccountAdmin
-        public ActionResult Index()
-        {
-            return View();
-        }
+        
     }
 }

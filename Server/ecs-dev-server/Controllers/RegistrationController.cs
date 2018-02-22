@@ -1,12 +1,7 @@
-﻿using System;
-using System.Net.Http;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using ecs_dev_server.Services;
 using ecs_dev_server.DTOs;
-using ecs_dev_server.Models;
 using System.Net;
-using System.IO;
-using Newtonsoft.Json;
 
 namespace ecs_dev_server.Controllers
 {
@@ -21,7 +16,7 @@ namespace ecs_dev_server.Controllers
             var json = ParseHttpService.ReadHttpPostBody(Request);
 
             // Deserialize the Json String
-            var userAccount = JsonConvert.DeserializeObject<AccountRegistrationDTO>(json);
+            var userAccount = JsonConverterService.DeserializeObject<AccountRegistrationDTO>(json);
 
             // Proccess any other information.
 
@@ -40,7 +35,7 @@ namespace ecs_dev_server.Controllers
             using(HttpClientService client = HttpClientService.Instance)
             {
                 // Fix this up with a proper url.
-                client.PostAsJson("*****", JsonConvert.SerializeObject(username));
+                client.PostAsJson("*****", JsonConverterService.SerializeObject(username));
             }
         }
     }

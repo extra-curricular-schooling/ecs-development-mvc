@@ -61,8 +61,7 @@ namespace ecs_dev_server.Services
                     IssuerSigningKey = new SymmetricSecurityKey(symmetricKey)
                 };
 
-                SecurityToken securityToken;
-                var principal = tokenHandler.ValidateToken(token, validationParameters, out securityToken);
+                var principal = tokenHandler.ValidateToken(token, validationParameters, out SecurityToken securityToken);
 
                 return principal;
             }
@@ -82,8 +81,9 @@ namespace ecs_dev_server.Services
             {
                 identity = simplePrinciple.Identity as ClaimsIdentity;
             }
-            catch(Exception e)
+            catch(Exception ex)
             {
+                Console.WriteLine(ex.Source + "\n" + ex.Message + "\n" + ex.StackTrace);
                 return false;
             }
             if (identity == null) return false;
@@ -97,8 +97,7 @@ namespace ecs_dev_server.Services
 
         protected Task<IPrincipal> AuthenticateJwtToken(string token)
         {
-            string username;
-            if (ValidateToken(token, out username))
+            if (ValidateToken(token, out string username))
             {
                 // based on username to get more information from database in order to build local identity  
                 var claims = new List<Claim> {
