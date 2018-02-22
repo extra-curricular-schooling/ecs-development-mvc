@@ -11,10 +11,10 @@ namespace ecs_dev_server.Controllers
     public class ResetPasswordController : Controller
     {
         /// <summary>
-        /// This needs to send data from the App to SSO for notifying that a password has changed.
+        /// 
         /// </summary>
-        
-        [Ajax]
+        /// <remarks>Author: Scott Roberts</remarks>
+        //[Ajax]
         [HttpPost]
         public ActionResult SubmitUsername()
         {
@@ -38,6 +38,10 @@ namespace ecs_dev_server.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>Author: Scott Roberts</remarks>
         //[Ajax]
         [HttpPost]
         public ActionResult VerifySecurityAnswers()
@@ -58,6 +62,10 @@ namespace ecs_dev_server.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>Author: Scott Roberts</remarks>
         //[Ajax]
         [HttpPost]
         public ActionResult ChangePassword()
@@ -81,6 +89,11 @@ namespace ecs_dev_server.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="credentials"></param>
+        /// <remarks>Author: Scott Roberts</remarks>
         private void PostNewPasswordToSSO(AccountCredentialsDTO credentials)
         {
             // Call request service to make a request to the SSO.

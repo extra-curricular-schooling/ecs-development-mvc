@@ -1,9 +1,5 @@
-﻿using HtmlAgilityPack;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace WebCrawler
@@ -14,12 +10,13 @@ namespace WebCrawler
         static int Main(string[] args)
         {
            
+            // Art & Design Sitess
             List<KeyValuePair<string, List<string>>> ArtSites = new List<KeyValuePair<string, List<string>>>() { };
             ArtSites.Add(new KeyValuePair<string, List<string>>("http://www.laweekly.com/arts", new List<string> { "div", "class", "img-box", "a", "href", "http://www.laweekly.com", "meta", "name", "keywords", "content", "meta", "property", "og:title", "content", "meta", "property", "og:description", "content","Art & Design" }));
             ArtSites.Add(new KeyValuePair<string, List<string>>("http://www.cubanartnews.org/can/category/art", new List<string> { "div", "class", "artwork", "a", "href", "http://www.cubanartnews.org/", "meta", "name", "keywords", "content", "title", "", "", "", "meta", "name", "description", "content", "Art & Design" }));
             ArtSites.Add(new KeyValuePair<string, List<string>>("http://www.cubanartnews.org/can/category/art/P5", new List<string> { "div", "class", "artwork", "a", "href", "http://www.cubanartnews.org/", "meta", "name", "keywords", "content", "title", "", "", "", "meta", "name", "description", "content", "Art & Design" }));
             ArtSites.Add(new KeyValuePair<string, List<string>>("http://www.cubanartnews.org/can/category/art/P10", new List<string> { "div", "class", "artwork", "a", "href", "http://www.cubanartnews.org/", "meta", "name", "keywords", "content", "title", "", "", "", "meta", "name", "description", "content", "Art & Design" }));
-            ArtSites.Add(new KeyValuePair<string, List<string>>("http://www.artcyclopedia.com/art-news.php", new List<string> { "font", "size", "+1", "a", "href", "artc", "meta", "name", "news_keywords", "content", "meta", "property", "og:title", "content", "meta", "property", "og:description", "content", "Art & Design" }));
+            ArtSites.Add(new KeyValuePair<string, List<string>>("http://www.artcyclopedia.com/art-news.php", new List<string> { "font", "size", "+1", "a", "href", "", "meta", "name", "news_keywords", "content", "meta", "property", "og:title", "content", "meta", "property", "og:description", "content", "Art & Design" }));
             ArtSites.Add(new KeyValuePair<string, List<string>>("https://theconversation.com/us/arts", new List<string> { "div", "class", "article--header", "a", "href", "https://theconversation.com", "meta", "name", "news_keywords", "content", "meta", "property", "og:title", "content", "meta", "property", "og:description", "content", "Art & Design" }));
             ArtSites.Add(new KeyValuePair<string, List<string>>("https://www.huffingtonpost.com/section/arts", new List<string> { "div", "class", "card__content", "a", "href", "https://www.huffingtonpost.com", "meta", "name", "news_keywords", "content", "meta", "property", "og:title", "content", "meta", "property", "og:description", "content", "Art & Design" }));
 

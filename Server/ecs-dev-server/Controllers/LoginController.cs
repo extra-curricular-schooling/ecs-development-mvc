@@ -13,7 +13,10 @@ namespace ecs_dev_server.Controllers
     [RoutePrefix("login")]
     public class LoginController : Controller
     {
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>Author: Scott Roberts</remarks>
         [Ajax]
         [HttpPost]
         public ActionResult Index()

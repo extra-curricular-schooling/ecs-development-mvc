@@ -4,6 +4,10 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// 
+/// </summary>
+/// <remarks>Author: Scott Roberts</remarks>
 namespace ecs_dev_server.Services
 {
     // This needs some sort of locking mechanism to ensure thread safety!!!

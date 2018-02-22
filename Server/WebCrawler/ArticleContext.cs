@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 
 namespace WebCrawler
 {
+    /// <summary>
+    /// EF Context to send/create a DB for the Article models.
+    /// </summary>
     class ArticleContext : DbContext
     {
         public DbSet<Article> Articles { get; set; }

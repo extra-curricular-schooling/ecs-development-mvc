@@ -8,6 +8,10 @@ using System.IO;
 using System.Net;
 using System.Web.Mvc;
 
+/// <summary>
+/// 
+/// </summary>
+/// <remarks>Author: Scott Roberts</remarks>
 namespace ecs_dev_server.Controllers
 {
     [RoutePrefix("SSO")]

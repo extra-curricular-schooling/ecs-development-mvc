@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Web;
-using System.Runtime.Serialization.Json;
 using Newtonsoft.Json;
-// Consider using ServiceStack.Text if the licensing allows. It looks cleaner.
 
+/// <summary>
+/// 
+/// </summary>
+/// <remarks>Author: Scott Roberts</remarks>
 namespace ecs_dev_server.Services
 {
     /// <summary>
