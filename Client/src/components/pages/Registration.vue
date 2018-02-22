@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1> {{msg}} </h1>
+  <div class="this-form">
+    <p class="msg-to-user">Please provide your information to get started!</p>
     <registration-form></registration-form>
   </div>
 </template>
@@ -16,7 +16,6 @@ export default {
   },
   data () {
     return {
-      msg: 'Join ExtraCurricular Schooling Now!'
     }
   },
   created () {
@@ -25,3 +24,11 @@ export default {
   }
 }
 </script>
+
+<style>
+.this-form {
+  padding-left: 90px;
+  padding-right: 90px;
+  padding-bottom: 50px;
+}
+</style>
