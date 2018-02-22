@@ -96,10 +96,17 @@
         <div class="control">
           <span class="select">
             <select>
-              <option selected>Question 1</option>
+              <option selected>--select--</option>
             </select>
           </span>
         </div>
+        <!-- <div class="control">
+          <span class="select">
+            <select v-model="user.question1">
+              <v-list-tile v-for="security_qa in security_qas" v-bind:key="security_qas.question">--select--</v-list-tile>
+            </select>
+          </span>
+        </div> -->
       </div>
       <div class="field security-questions-answers">
         <div class="control">
@@ -111,7 +118,7 @@
         <div class="control">
           <span class="select">
             <select>
-              <option selected>Question 2</option>
+              <option selected>--select--</option>
             </select>
           </span>
         </div>
@@ -126,7 +133,7 @@
         <div class="control">
           <span class="select">
             <select>
-              <option selected>Question 3</option>
+              <option selected>--select--</option>
             </select>
           </span>
         </div>
@@ -138,7 +145,7 @@
       </div>
     </div>
 
-    <div class="field form-agreements">
+    <!-- <div class="field form-agreements">
       <label class="checkbox">
         <input type="checkbox" checked="checked" name="remember-me-box">
         Remember me
@@ -147,7 +154,7 @@
         <input type="checkbox">
         I agree to the <a href="#">terms and conditions</a>.
       </label>
-    </div>
+    </div> -->
 
     <div class="field is-grouped is-grouped-centered form-buttons">
       <p class="control">
@@ -170,21 +177,27 @@ import axios from 'axios'
 export default {
   components: {
   },
-  data() {
+  data () {
     return {
-      user: { // Skipping mailing address data for now
+      user: {
+        username: '',
+        password: '',
+        // confirmPassword: '',
+        security_qas: [
+          { question: '', answer: '' },
+          { question: '', answer: '' },
+          { question: '', answer: '' }
+        ],
+        email: '',
         firstName: '',
         lastName: '',
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        answer1: '',
-        answer2: '',
-        answer3: ''
+        // address: '',
+        zipCode: '',
+        city: '',
+        state: ''
       },
       errors: []
-    };
+    }
   },
   methods: {
     submit: () => {
@@ -192,24 +205,40 @@ export default {
         method: 'POST',
         url: 'https://localhost:44313/registration/RegisterUser',
         data: {
+          username: this.user.username,
+          password: this.user.password,
+          // confirmPassword: this.user.confirmPassword,
+          security_qas: [
+            { question: this.user.question1, answer: this.user.answer1 },
+            { question: this.user.question2, answer: this.user.answer2 },
+            { question: this.user.question3, answer: this.user.answer3 }
+          ],
+          email: this.user.email,
           firstName: this.user.firstName,
           lastName: this.user.lastName,
-          username: this.user.username,
-          email: this.user.email,
-          password: this.user.password,
-          confirmPassword: this.user.confirmPassword,
-          answer1: this.user.answer1,
-          answer2: this.user.answer2,
-          answer3: this.user.answer3
+          // address: this.user.address
+          zipCode: this.user.zipCode,
+          city: this.user.city,
+          state: this.user.state
         },
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Credentials': true
         }
       })
-        .then(response => console.log('It worked!'))
+        .then(response => console.log(response))
         .catch(response => console.log(response))
-    }
+    },
+/*    fetchSecurityQuestions: () => {
+      axios({
+        method: 'GET',
+        url: 'https://localhost:44313/registration/RequestSecurityQuestions'
+      })
+        .then(response => {
+          this.security_qas = response.data
+        })
+        .catch(response => console.log(response))
+    } */
   }
 }
 </script>
