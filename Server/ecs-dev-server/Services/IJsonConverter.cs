@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ecs_dev_server.Services
 {
-    interface IJsonConverter
+    public interface IJsonConverter
     {
         /// <summary>
         /// 

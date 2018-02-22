@@ -15,15 +15,12 @@
     <RootNamespace>ecs_dev_server</RootNamespace>
     <AssemblyName>ecs-dev-server</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44313</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>
-    </IISExpressUseClassicPipelineMode>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -186,12 +183,14 @@
     <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\ResetPasswordController.cs" />
+    <Compile Include="Controllers\SSOController.cs" />
     <Compile Include="Controllers\SweepstakeAdminController.cs" />
     <Compile Include="Controllers\SweepstakeController.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
     <Compile Include="DTOs\SSOAccountDTO.cs" />
     <Compile Include="ECSContext.cs" />
     <Compile Include="DotNetOpenAuth.LinkedInOAuth2\LinkedInOAuth2Client.cs" />
+    <Compile Include="Filters\AjaxAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -211,10 +210,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ConsoleService.cs" />
     <Compile Include="Services\IHttpClient.cs" />
+    <Compile Include="Services\IHttpClientAsync.cs" />
     <Compile Include="Services\IJsonConverter.cs" />
     <Compile Include="Services\JsonConverterService.cs" />
     <Compile Include="Services\HttpClientService.cs" />
     <Compile Include="Services\JwtManager.cs" />
+    <Compile Include="Services\RequestParseService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -229,7 +230,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Filters\" />
     <Folder Include="Views\AccountAdmin\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Auth\" />
@@ -238,6 +238,7 @@
     <Folder Include="Views\Logout\" />
     <Folder Include="Views\Registration\" />
     <Folder Include="Views\ResetPassword\" />
+    <Folder Include="Views\SSO\" />
     <Folder Include="Views\SweepstakeAdmin\" />
     <Folder Include="Views\Sweepstake\" />
     <Folder Include="Views\Test\" />
@@ -248,13 +249,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cors\Cors.csproj">
-      <Project>{6d6d0489-2761-486c-afba-3c32ea87bb5b}</Project>
-      <Name>Cors</Name>
-    </ProjectReference>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <ProjectReference Include="..\ECS.Cors\ECS.Cors.csproj">
+      <Project>{56dd431d-d64b-4f0d-a949-cf7f39a8c6d2}</Project>
+      <Name>ECS.Cors</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

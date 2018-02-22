@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Cors;
+using ECS.Cors;
 
 namespace ecs_dev_server
 {
@@ -13,10 +13,10 @@ namespace ecs_dev_server
     {
         protected void Application_Start()
         {
+            AuthConfig.RegisterAuth();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            AuthConfig.RegisterAuth();
         }
     }
     ///*

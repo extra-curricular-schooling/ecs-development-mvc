@@ -13,15 +13,17 @@ namespace ecs_dev_server
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // This allows for attribute tags to route to controllers without declaring
+            // the routes.MapRoute() path.
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
-            // This allows for attribute tags to route to controllers without declaring
-            // the routes.MapRoute() path.
-            routes.MapMvcAttributeRoutes();
+            
         }
     }
 }
