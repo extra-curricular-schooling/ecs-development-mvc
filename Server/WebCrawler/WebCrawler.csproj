@@ -59,19 +59,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArtDesignCrawler.cs" />
     <Compile Include="Article.cs" />
     <Compile Include="BaseCrawler.cs" />
-    <Compile Include="IBaseCrawler.cs" />
-    <Compile Include="BusinessCrawler.cs" />
-    <Compile Include="EarthCrawler.cs" />
-    <Compile Include="EducationCrawler.cs" />
-    <Compile Include="HistoryCrawler.cs" />
     <Compile Include="ICrawler.cs" />
-    <Compile Include="MedicalCrawler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TechCrawler.cs" />
     <Compile Include="ArticleContext.cs" />
   </ItemGroup>
   <ItemGroup>
