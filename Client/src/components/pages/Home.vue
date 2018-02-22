@@ -18,18 +18,30 @@ export default {
     return {
       columns: [
         {
-          label: 'Name',
-          field: 'name'
+          label: 'Article Type',
+          field: 'articleType'
         },
         {
-          label: 'URL',
-          field: 'url'
+          label: 'Article Title',
+          field: 'articleTitle'
+        },
+        {
+          label: 'Article Link',
+          field: 'articleLink'
+        },
+        {
+          label: 'Article Description',
+          field: 'articleDescription'
+        },
+        {
+          label: 'Article Tag',
+          field: 'articleTag'
         }
       ],
       rows: [
-        {name: 'School', url: 'http://www.ivc.edu/Pages/default.aspx'},
-        {name: 'Hookah', url: 'https://www.hookah-shisha.com/'},
-        {name: 'Hookah', url: 'https://powerhookahus.com/'}
+        {articleType: 'School', articleTitle: 'main page', articleLink: 'http://www.ivc.edu/Pages/default.aspx', articleDescription: 'Famous School', articleTag: 'education'},
+        {articleType: 'Hookah', articleTitle: 'power', articleLink: 'https://www.hookah-shisha.com/', articleDescription: 'Famous', articleTag: 'entertainment'},
+        {articleType: 'King', articleTitle: 'Competition', articleLink: 'https://powerhookahus.com/', articleDescription: 'Famous Brands', articleTag: 'entertainment'}
       ],
       onClickFn: function (row, index) {
         console.log(row)
