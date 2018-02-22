@@ -47,13 +47,42 @@
           <div class="tile is-ancestor">
             <div class="tile is-parent">
               <article class="tile is-child box">
+                <!-- Login Box Placeholder -->
                 <h1 class="title"><strong>Getting Started</strong></h1>
-                <figure class="image">
-                  <img src="https://bulma.io/images/placeholders/256x256.png">
-                </figure>
-                <p>
-                  All we need is some basic information. Click <a href="/"><strong>here</strong></a> to begin.
-                </p>
+                <div class="field">
+                  <label class="label field-element is-required">Username</label>
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input" type="text" placeholder="Username" required>
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i class="fas fa-check"></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="field password">
+                  <label class="label field-element is-required">Password</label>
+                  <div class="control has-icons-left">
+                    <input class="input" type="password" placeholder="************" required>
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-lock"></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="field is-grouped is-grouped-centered">
+                  <p class="control">
+                    <button class="button is-primary login-button">
+                    Login
+                    </button>
+                  </p>
+                  <p class="control">
+                    <router-link to="/Registration" tag="button" class="button is-link register-button">
+                    Sign Up
+                    </router-link>
+                  </p>
+                </div>
+                <!-- End Login -->
               </article>
             </div>
             <div class="tile is-parent">
@@ -165,6 +194,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.login-button {
+  width: 90px;
+}
+.register-button {
+  width: 90px;
+}
 h1 {
   font-family: Ubuntu;
   font-size: 24px;

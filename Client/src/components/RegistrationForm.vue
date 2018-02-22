@@ -1,73 +1,166 @@
 <template>
-  <!-- Main Registration Fields -->
-  <form class="registration-fields">
-    <p>Please register your information to get started.</p>
-    <fieldset>
-      <legend>Basic Info</legend>
-      <label for="firstname" class="required-data"><b>First Name</b></label><br>
-      <input type="text" placeholder="First Name" name="firstname" required><br>
+  <!-- Main Registration Form -->
+  <form class="registration-form">
+    <p class="warning field-element">* indicates a required field</p>
+    <div class="is-field-group">
+      <div class="field first-name">
+        <label class="label field-element is-required">First Name</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="First Name" required>
+        </div>
+      </div>
 
-      <label for="lastname" class="required-data"><b>Last Name</b></label><br>
-      <input type="text" placeholder="Last Name" name="lastname" required><br>
+      <div class="field last-name">
+        <label class="label field-element is-required">Last Name</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Last Name" required>
+        </div>
+      </div>
 
-      <label for="username" class="required-data"><b>Username</b></label><br>
-      <input type="text" placeholder="username" name="username" required><br>
+      <div class="field username">
+        <label class="label field-element is-required">Username</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input" type="text" placeholder="Username" required>
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </div>
+      </div>
 
-      <label for="email" class="required-data"><b>Email Address</b></label><br>
-      <input type="text" placeholder="myemail@email.com" name="email" required><br>
+      <div class="field email-address">
+        <label class="label field-element is-required">Email</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input" type="email" placeholder="Email" required>
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-exclamation-triangle"></i>
+          </span>
+        </div>
+      </div>
 
-      <label for="pswd" class="required-data"><b>Password</b></label><br>
-      <input type="password" placeholder="************" name="pswd" required><br>
+      <div class="field password">
+        <label class="label field-element is-required">Password</label>
+        <div class="control has-icons-left">
+          <input class="input" type="password" placeholder="************" required>
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+        </div>
+      </div>
 
-      <label for="confirm-pswd" class="required-data"><b>Confirm Password</b></label><br>
-      <input type="password" placeholder="************" name="confirm-pswd" required><br>
-    </fieldset>
-
-    <fieldset>
-      <legend>Mailing Address</legend>
-      <label for="street-address"><b>Street Address</b></label><br>
-      <input type="text" placeholder="Street Address" name="street-address" optional><br>
-
-      <label for="city"><b>City</b></label><br>
-      <input type="text" placeholder="City" name="city" optional><br>
-
-      <label for="state"><b>State</b></label><br>
-      <input type="text" placeholder="State" name="state" optional><br>
-
-      <label for="zipcode"><b>Zip Code</b></label><br>
-      <input type="text" placeholder="Zip Code" name="zipcode" optional><br>
-    </fieldset>
-
-    <fieldset>
-      <legend>Security Questions</legend>
-      <select id="questions1" onchange="showQuestions1()">
-        <option value="0">--select--</option>
-      </select><label class="required-data"></label><br>
-      <input type="text" placeholder="Answer 1" name="answer1" required><br>
-
-      <select id="questions2" onchange="showQuestions2()">
-        <option value="0">--select--</option>
-      </select><label class="required-data"></label><br>
-      <input type="text" placeholder="Answer 2" name="answer2" required><br>
-
-      <select id="questions3" onchange="showQuestions3()">
-        <option value="0">--select--</option>
-      </select><label class="required-data"></label><br>
-      <input type="text" placeholder="Answer 3" name="answer3" required><br>
-    </fieldset>
-
-    <label>
-    <input type="checkbox" checked="checked" name="rememberme-box" style="margin-bottom:12px">Remember me</label><br>
-
-    <label>
-    <input type="checkbox" name="agreement-box" style="margin-bottom:12px">
-    I have read and agreed to the <a href="#" style="color:dodgerblue">Terms & Conditions</a>.</label>
-
-    <div class="clearfix">
-      <router-link to="/" tag="button">Cancel</router-link>
-      <button class="registerbtn" v-on:click.prevent="submit">Register</button>
+      <div class="field confirm-password">
+        <label class="label field-element is-required">Confirm Password</label>
+        <div class="control has-icons-left">
+          <input class="input" type="password" placeholder="************" required>
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+        </div>
+      </div>
     </div>
-    <!-- Terms and Conditions Modal -->
+
+    <div class="is-field-group">
+      <div class="field mailing-address">
+        <label class="label field-element">Mailing Address</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Street Address">
+        </div>
+      </div>
+      <div class="field mailing-address">
+        <div class="control">
+          <input class="input" type="text" placeholder="City">
+        </div>
+      </div>
+      <div class="field is-grouped mailing-adress">
+        <p class="control">
+          <span class="select">
+            <select>
+              <option selected>State</option>
+            </select>
+          </span>
+        </p>
+        <p class="control">
+          <input class="input" type="text" placeholder="Zip Code">
+        </p>
+      </div>
+    </div>
+
+    <div class="is-field-group">
+      <div class="field security-questions">
+        <label class="label field-element is-required">Security Questions</label>
+        <div class="control">
+          <span class="select">
+            <select>
+              <option selected>Question 1</option>
+            </select>
+          </span>
+        </div>
+      </div>
+      <div class="field security-questions-answers">
+        <div class="control">
+          <input class="input" type="text" placeholder="Answer 1" required>
+        </div>
+      </div>
+
+      <div class="field security-questions">
+        <div class="control">
+          <span class="select">
+            <select>
+              <option selected>Question 2</option>
+            </select>
+          </span>
+        </div>
+      </div>
+      <div class="field security-questions-answers">
+        <div class="control">
+          <input class="input" type="text" placeholder="Answer 2" required>
+        </div>
+      </div>
+
+      <div class="field security-questions">
+        <div class="control">
+          <span class="select">
+            <select>
+              <option selected>Question 3</option>
+            </select>
+          </span>
+        </div>
+      </div>
+      <div class="field security-questions-answers">
+        <div class="control">
+          <input class="input" type="text" placeholder="Answer 3" required>
+        </div>
+      </div>
+    </div>
+
+    <div class="field form-agreements">
+      <label class="checkbox">
+        <input type="checkbox" checked="checked" name="remember-me-box">
+        Remember me
+      </label><br>
+      <label class="checkbox">
+        <input type="checkbox">
+        I agree to the <a href="#">terms and conditions</a>.
+      </label>
+    </div>
+
+    <div class="field is-grouped is-grouped-centered form-buttons">
+      <p class="control">
+        <router-link to="/" tag="button" class="button is-link cancel-button">
+        Cancel
+        </router-link>
+      </p>
+      <p class="control">
+        <button class="button is-primary submit-button" v-on:click.prevent="submit">
+        Submit
+        </button>
+      </p>
+    </div>
   </form>
 </template>
 
@@ -95,67 +188,36 @@ export default {
 }
 </script>
 
-<style>
-*, *:before, *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-button {
-  background-color: #E8E9E4;
-  color: black;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 270px;
-  opacity: 0.9;
-}
-
-button:hover {
-    opacity:1;
-}
-
-fieldset {
-  margin-bottom: 10px;
-  border-color: #D3DCE5;
-  border-width:  5px;
-  background-color: #F8FCFB;
-}
-
-form {
-  max-width: 550px;
-  margin: 10px auto;
-  padding: 0px 0px;
-  border-radius: 8px;
+<style scoped>
+.field-element {
   text-align: left;
 }
 
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
+.form-agreements {
+  text-align: left;
 }
 
-input[type=text], input[type=password] {
-  width: 500px;
-  padding: 10px;
-  margin: 5px 0 25px 0;
-  display: inline-block;
-  border: none;
-  background: #E8E9E4;
+.is-field-group:after {
+  content: "\A";
+  white-space: pre;
 }
 
-legend {
-  font-size: 1.4em;
+.is-field-group:before {
+  content: "\A";
+  white-space: pre;
 }
 
-label.required-data:after {
+.is-required:after {
   content: " *";
   color: red;
 }
 
-p {
-  text-align: center;
+.warning {
+  color: red;
+  font-size: 12px;
+}
+
+button {
+  width: 175px;
 }
 </style>

@@ -53,7 +53,7 @@ Vue.component("navbar", {
         <a class="link is-info">Contact Us</a>\
     </p>\
     <p class="level-item has-text-centered">\
-        <a class="button is-info">Get Started</a>\
+        <router-link to="Registration" tag="button" class="registration-button">Get Started</vue-router>\
     </p>\
 </nav>'
 });
@@ -84,5 +84,12 @@ h1 {
   font-variant: normal;
   font-weight: 500;
   line-height: 26.4px;
+}
+
+.registration-button {
+    background-color: #209cee;
+    padding: 15px 35px;
+    color: white;
+    font-size: 15px;
 }
 </style>

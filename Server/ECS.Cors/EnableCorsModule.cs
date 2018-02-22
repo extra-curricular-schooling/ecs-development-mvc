@@ -7,7 +7,7 @@ using System.Web;
 
 namespace ECS.Cors
 {
-    public class EnableCorsModule
+    public class EnableCorsModule: IHttpModule
     {
         public void Init(HttpApplication context)
         {

@@ -15,6 +15,7 @@ namespace ecs_dev_server.Controllers
     {
         // GET: Registration
         [HttpGet]
+        [Route("SayHello")]
         public ActionResult SayHello()
         {
             return Json("Hello", JsonRequestBehavior.AllowGet);
