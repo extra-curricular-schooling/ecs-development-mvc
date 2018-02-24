@@ -4,27 +4,37 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNet.Identity;
 
 namespace ecs_dev_server.Models
 {
+    /// <summary>
+    /// This model represents a given Account's personal information. 
+    /// </summary>
     public class User
     {
-        [Key]
-
-        [Required(ErrorMessage="Email is requried")]
-        [DataType(DataType.Email)]
+        //The email a user submitted during registration
+        [Key, Required, DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [Required(ErrorMessage="First name is requried")]
-        [RegularExpression(@"^[a-zA-Z\s].{1,}$")]
+        //The first name a user submitted during registration
+        [Required, Display(Name = "First Name"), StringLength(50)]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage="Last name is requried")]
-        [RegularExpression(@"^[a-zA-Z].{1,}$")]
+        //The last name a user submitted during registration
+        [Required, Display(Name = "Last Name"), StringLength(50)]
         public string LastName { get; set; }
 
-        // [RegularExpression(@"[a-zA-Z0-9#.\s]$")]
-        // Address Data
-        public List<ZipLocation> ZipLocation { get; set; }
+        //ForeignKey of ZipLocation class
+        [Display(Name = "Zip Code"), StringLength(10, MinimumLength = 5, ErrorMessage = "Zipcode must be 5-10 characters")]
+        public string ZipCode { get; set; }
+
+        //navigation property of cookies class
+        //a user can have many cookies
+        public virtual ICollection<Cookies> Cookies { get; set; }
+
+        //navigation property of zipLocation class
+        //a user can have one zipcode/address
+        public virtual ZipLocation ZipLocation { get; set; }
     }
 }
