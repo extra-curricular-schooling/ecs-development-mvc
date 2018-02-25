@@ -148,16 +148,29 @@
       </div>
     </div>
 
-    <!-- <div class="field form-agreements">
+    <div class="field form-agreements">
       <label class="checkbox">
         <input type="checkbox" checked="checked" name="remember-me-box">
         Remember me
       </label><br>
       <label class="checkbox">
         <input type="checkbox">
-        I agree to the <a href="#">terms and conditions</a>.
+        I agree to the <a v-on:click="showModal">Terms and Conditions</a>.
       </label>
-    </div> -->
+
+      <!-- Agreement Modal -->
+      <div class="modal" v-bind:class="{ 'is-active' : isActive }">
+        <div class="modal-background">
+          <div class="modal-content">
+            <div class="box">
+              <agreement-modal-content></agreement-modal-content>
+            </div>
+          </div>
+        </div>
+        <button v-on:click="hideModal" class="modal-close"></button>
+      </div>
+      <!-- End Modal -->
+    </div>
 
     <!-- Form submission options -->
     <div class="field is-grouped is-grouped-centered form-buttons">
@@ -167,7 +180,7 @@
         </router-link>
       </p>
       <p class="control">
-        <button class="button is-primary submit-button" v-on:click.prevent="submit">
+        <button class="button is-primary submit-button" v-on:click="submit">
         Submit
         </button>
       </p>
@@ -177,12 +190,16 @@
 
 <script>
 import axios from 'axios'
+import agreementModalContent from '@/components/AgreementModalContent'
 
 export default {
+  name: 'RegistrationForm',
   components: {
+    agreementModalContent
   },
   data () {
     return {
+      isActive: false,
       user: {
         userName: '',
         password: '',
@@ -204,6 +221,14 @@ export default {
     }
   },
   methods: {
+    // Modal Activation
+    showModal: function () {
+      this.isActive = !this.isActive
+    },
+    hideModal: function () {
+      this.isActive = !this.isActive
+    },
+    // Submit Form
     submit: () => {
       axios({
         method: 'POST',
@@ -269,6 +294,10 @@ export default {
 .is-required:after {
   content: " *";
   color: red;
+}
+
+.modal-content {
+  padding-top: 100px;
 }
 
 .warning {
