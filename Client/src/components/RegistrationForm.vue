@@ -2,7 +2,8 @@
   <!-- Main Registration Form -->
   <form class="registration-form">
     <p class="warning field-element">* indicates a required field</p>
-    <!-- Begin required entry of basic user information -->
+
+    <!-- BEGIN required fields for basic information -->
     <div class="is-field-group">
       <div class="field first-name">
         <label class="label field-element is-required">First Name</label>
@@ -64,8 +65,9 @@
         </div>
       </div>
     </div>
+    <!-- END basic info fields -->
 
-    <!-- Begin optional entry of mailing address info -->
+    <!-- BEGIN optional fields for mailing address -->
     <div class="is-field-group">
       <div class="field mailing-address">
         <label class="label field-element">Mailing Address</label>
@@ -91,8 +93,9 @@
         </p>
       </div>
     </div>
+    <!-- END mailing address fields -->
 
-    <!-- Begin Security Questions group -->
+    <!-- BEGIN required security questions -->
     <div class="is-field-group">
       <div class="field security-questions">
         <label class="label field-element is-required">Security Questions</label>
@@ -147,6 +150,7 @@
         </div>
       </div>
     </div>
+    <!-- END security questions -->
 
     <div class="field form-agreements">
       <label class="checkbox">
@@ -154,25 +158,11 @@
         Remember me
       </label><br>
       <label class="checkbox">
-        <input type="checkbox">
-        I agree to the <a v-on:click="showModal">Terms and Conditions</a>.
+        <agreement-modal></agreement-modal>
       </label>
-
-      <!-- Agreement Modal -->
-      <div class="modal" v-bind:class="{ 'is-active' : isActive }">
-        <div class="modal-background">
-          <div class="modal-content">
-            <div class="box">
-              <agreement-modal-content></agreement-modal-content>
-            </div>
-          </div>
-        </div>
-        <button v-on:click="hideModal" class="modal-close"></button>
-      </div>
-      <!-- End Modal -->
     </div>
 
-    <!-- Form submission options -->
+    <!-- BEGIN form submission options -->
     <div class="field is-grouped is-grouped-centered form-buttons">
       <p class="control">
         <router-link to="/" tag="button" class="button is-link cancel-button">
@@ -180,26 +170,33 @@
         </router-link>
       </p>
       <p class="control">
-        <button class="button is-primary submit-button" v-on:click="submit">
+        <!-- NOTE: Issues with properly checking if required fields have been entered -->
+        <registration-alert v-on:click="submit"></registration-alert>
+        <!-- <router-link to="/" tag="button" class="button is-primary submit-button" v-on:click="submit">
         Submit
-        </button>
+        </router-link> -->
+        <!-- <button class="button is-primary submit-button" v-on:click="showAlert">
+        Submit
+        </button> -->
       </p>
     </div>
+    <!-- END submission options -->
   </form>
 </template>
 
 <script>
 import axios from 'axios'
-import agreementModalContent from '@/components/AgreementModalContent'
+import agreementModal from '@/components/AgreementModal'
+import registrationAlert from '@/components/RegistrationAlert'
 
 export default {
   name: 'RegistrationForm',
   components: {
-    agreementModalContent
+    agreementModal,
+    registrationAlert
   },
   data () {
     return {
-      isActive: false,
       user: {
         userName: '',
         password: '',
@@ -221,14 +218,6 @@ export default {
     }
   },
   methods: {
-    // Modal Activation
-    showModal: function () {
-      this.isActive = !this.isActive
-    },
-    hideModal: function () {
-      this.isActive = !this.isActive
-    },
-    // Submit Form
     submit: () => {
       axios({
         method: 'POST',
