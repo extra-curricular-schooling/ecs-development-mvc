@@ -1,5 +1,5 @@
 <template>
-<span class="container">
+<div class="container is-fullhd">
     <section class="hero is-dark">
       <div class="hero-body">
         <div class="container is-fluid">
@@ -168,7 +168,7 @@
             </div>
         </div>
     </footer>
-</span>
+</div>
 </template>
 
 <script>
