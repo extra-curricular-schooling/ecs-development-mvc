@@ -221,7 +221,7 @@ export default {
     submit: () => {
       axios({
         method: 'POST',
-        url: 'https://localhost:44313/registration/RegisterUser',
+        url: 'https://localhost:44311/Registration/SubmitRegistration',
         data: {
           userName: this.user.username,
           password: this.user.password,

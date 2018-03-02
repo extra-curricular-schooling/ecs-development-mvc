@@ -45,6 +45,11 @@ export default new Router({
       path: '/linkedin',
       name: 'LinkedIn',
       component: () => import('@/components/pages/LinkedIn')
+    },
+    {
+      path: '/ScottTest',
+      name: 'ScottTest',
+      component: () => import('@/components/pages/ScottTest')
     }
   ]
 })
